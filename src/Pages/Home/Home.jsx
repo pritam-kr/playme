@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div className="home-container">
             <img
-                src="https://user-images.githubusercontent.com/84632214/159449183-427eeecf-2f8d-414d-b806-a4ae5858da3c.png"
+                src="https://res.cloudinary.com/dhqxln7zi/image/upload/v1648118531/new_vohp8t.jpg"
                 alt="landing"
                 className="responsive-images landing-image"
             />
