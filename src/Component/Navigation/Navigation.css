@@ -1,27 +1,26 @@
 .nav {
-    max-width: 1200px;
-    margin: 2rem auto;
+  max-width: 1200px;
+  margin: 2rem auto;
 }
 
 .nav-wrapper {
-    padding: 1rem;
-    margin: 0 1rem;
+  padding: 1rem;
+  margin: 0 1rem;
 }
 
 .logo {
-    color: var(--white-text);
-    font-size: 2rem;
+  color: var(--white-text);
+  font-size: 2rem;
 }
 
 .btn-nav-login {
-    padding: .8rem 2.5rem;
-    min-height: 3rem;
-    font-size: 1.4rem;
-    border-radius: 10rem;
-    background-color: var(--primary-color);
+  padding: 0.8rem 2.5rem;
+  min-height: 3rem;
+  font-size: 1.4rem;
+  border-radius: 10rem;
+  background-color: var(--primary-color);
 }
 
 .login-icon {
-    margin-right: .5rem;
-
+  margin-right: 0.5rem;
 }
