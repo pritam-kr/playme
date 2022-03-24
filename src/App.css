@@ -1,1 +1,63 @@
- 
+/*-----This font for headings and paragraph only------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,300&family=Roboto:wght@100;300;400;500;700&display=swap');
+
+
+* {
+    box-sizing: border-box;
+}
+
+/* font-family: 'Lato', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+:root {
+    --primary-color: #2ea3da;
+    --background-color: #1A202C;
+    --dark-background-color: #040C1D;
+    --white-text: #f7f7f7;
+    --secondary-text-color: #424456;
+    --primary-hover: #0662B3;
+}
+
+
+html{
+    font-size: 67%;
+}
+@media screen and (min-width: 900px){
+     
+html{
+    font-size: 70%;
+}
+}
+
+body{
+    background-color: var(--background-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: capitalize;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+li {
+    list-style-type: none;
+
+}
+
+::placeholder{
+    font-size: 1.3rem;
+}
+
+li,
+p,
+span,
+li,
+label, button, ::placeholder {
+    font-family: 'Lato', sans-serif;
+}
