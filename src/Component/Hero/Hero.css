@@ -45,7 +45,7 @@
   border-radius: 10rem;
 }
 
-.btn-search {
+.btn-explore {
   padding: 1rem 2.5rem;
   border-radius: 10rem;
   background-color: var(--primary-color);
@@ -53,7 +53,7 @@
 color: var(--white-text);
 }
 
-.btn-search:hover {
+.btn-explore:hover {
   background-color: var(--primary-hover);
 }
 

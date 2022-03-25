@@ -2,8 +2,11 @@ import React from "react"
 import * as FaIcons from "react-icons/fa";
 import * as BiIcons from "react-icons/bi";
 import "./Navigation.css"
+import {useNavigate} from "react-router-dom"
 
 const Navigation = () => {
+
+    const navigate = useNavigate()
 
     return (
         <nav className="nav">
@@ -16,8 +19,8 @@ const Navigation = () => {
                 </div>
 
                 <div className="right-side">
-                    <button className="btn btn-primary btn-nav-login center">
-                        <BiIcons.BiLogIn className="icons login-icon" />  Login
+                    <button className="btn btn-primary btn-nav-login center" onClick={() => navigate('/login')}>
+                        <BiIcons.BiLogIn className="icons home-login-icon" />  Login
                     </button>
                 </div>
             </div>
