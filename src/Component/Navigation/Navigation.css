@@ -24,3 +24,8 @@
 .login-icon {
   margin-right: 0.5rem;
 }
+
+.home-login-icon{
+  color: var(--white-text);
+  margin-right: .5rem;
+}

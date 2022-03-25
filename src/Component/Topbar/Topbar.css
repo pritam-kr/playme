@@ -1,0 +1,139 @@
+.topbar {
+  margin: 0 auto;
+  background-color: var(--dark-background-color);
+  box-shadow: var(--smooth-shadow);
+}
+
+.topbar-wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  min-height: 4rem;
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-left .logo-wrapper {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.topbar-left .logo-wrapper .topbar-logo {
+  display: none;
+}
+
+.topbar-left .topbar-logo-icon {
+  font-size: 2.5rem;
+  color: var(--white-text);
+}
+
+.hamburger-icons {
+  font-size: 2.5rem;
+  margin-right: 1.8rem;
+  transition: 0.3s all;
+  padding: 0.1rem;
+  display: block;
+  color: var(--white-text);
+}
+
+.hamburger-icons:hover {
+  background-color: var(--background-color);
+}
+
+.topbar-center {
+  flex-basis: 50%;
+  margin-left: auto;
+}
+
+.topbar-center .searchbar-wrapper {
+  display: flex;
+  margin: 0;
+  align-items: center;
+}
+
+.topbar-center .searchbar-wrapper .input {
+  padding: 0.8rem 1rem;
+  margin: 0;
+  border-bottom-left-radius: 10rem;
+  border-top-left-radius: 10rem;
+  outline: none;
+}
+
+.btn-search {
+  padding: 0;
+  border-radius: 0;
+  padding: 0.85rem 2rem;
+  border-bottom-right-radius: 10rem;
+  border-top-right-radius: 10rem;
+  background-color: var(--primary-color);
+  color: var(--white-text);
+}
+
+.btn-search:hover{
+  background-color: var(--primary-hover);
+}
+
+
+.btn-search .topbar-search-icon {
+  color: var(--white-text);
+}
+
+.topbar-right {
+  margin-left: auto;
+}
+
+.btn-nav-login {
+  padding: 0;
+  background-color: transparent;
+}
+
+.topbar-right .login-icon {
+  font-size: 2.5rem;
+}
+
+.topbar-right .login-text {
+  display: none;
+}
+
+.topbar-icon {
+  color: var(--primary-color);
+}
+
+.topbar-logo {
+  color: var(--white-text);
+}
+
+.auth-wrapper .login-icon {
+  color: var(--white-text);
+}
+
+@media screen and (min-width: 475px) {
+  .btn-nav-login .login-icon {
+    font-size: 1.5rem;
+  }
+
+  .btn-nav-login {
+    padding: 0.85rem 2rem;
+    background-color: var(--primary-color);
+  }
+
+  .topbar-right .login-text {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .topbar-left .logo-wrapper .topbar-logo {
+    display: block;
+  }
+
+  .hamburger-icons {
+    display: none;
+  }
+}
