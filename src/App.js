@@ -2,17 +2,28 @@ import "./App.css";
 import { Home } from "./Pages/Index";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Explore,Login,  } from "./Pages/Index";
-import {Topbar,} from "./Component/index"
+import {Sidebar, Topbar,} from "./Component/index"
 
 
 function App() {
 
   const {pathname} = useLocation() 
-  
+
+  const SideBar = () => {
+
+    if(pathname !== "/login" && pathname !== "/" && pathname !== "/signup"){
+          return <Sidebar />
+    }
+    return null
+
+  }
 
   return (
     <div className="app-container">
+
       {pathname !== "/" && <Topbar />}
+      <SideBar />
+      {/* {pathname !== "/login" && <Topbar />} */}
       {/* {pathname !== "/" && <Sidebar />} */}
       <Routes>
         <Route path="/" element={<Home />} ></Route>

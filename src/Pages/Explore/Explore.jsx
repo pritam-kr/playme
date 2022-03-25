@@ -6,7 +6,7 @@ import { Sidebar } from "../../Component/index";
 export const Explore = () => {
     return (
         <div className="explore-container">
-            <Sidebar />
+            {/* <Sidebar /> */}
             <div className="video-list-container">
                 
                 <div className="categories-wrapper">
