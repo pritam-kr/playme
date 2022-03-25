@@ -2,7 +2,7 @@ import "./App.css";
 import { Home } from "./Pages/Index";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Explore,Login,  } from "./Pages/Index";
-import {Topbar, Sidebar} from "./Component/index"
+import {Topbar,} from "./Component/index"
 
 
 function App() {
