@@ -13,10 +13,13 @@ font-family: 'Roboto', sans-serif; */
 :root {
     --primary-color: #2ea3da;
     --background-color: #1A202C;
-    --dark-background-color: #040C1D;
+    --dark-background-color: #040c1dd5;
     --white-text: #f7f7f7;
     --secondary-text-color: #424456;
     --primary-hover: #0662B3;
+    --smooth-shadow: 0px 0px 10px 4px rgb(0 0 0 / 5%);
+    --border-color: rgba(206, 204, 204, 0.328);
+    --secondary-text: #909090;
 }
 
 
@@ -60,4 +63,9 @@ span,
 li,
 label, button, ::placeholder {
     font-family: 'Lato', sans-serif;
+}
+
+.icons{
+    color: var(--primary-color);
+    cursor: pointer;
 }
