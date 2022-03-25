@@ -20,7 +20,7 @@ export const Explore = () => {
                     </ul>
                 </div>
 
-                {/* Video listing cards */}
+                {/* Video listing cards will show here */}
                 <div className="video-container">
                     <h1>Explore</h1>
                 </div>
