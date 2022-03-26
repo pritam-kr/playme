@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
+import { useAuthContext } from "../../Context/Index"
 
-export const Login = (loginFormHandler, setFormData, formData, error) => {
-  return (
-    <div className="login-container">
 
-       <h1>Login</h1> 
-     {/* <form className="form" onSubmit={(e) => loginFormHandler(e)}>
+export const Login = () => {
+
+    const [formData, setFormData] = useState({ email: "", password: "" })
+    const { loginFormHandler } = useAuthContext()
+
+    const loginSubmitHandler = (e) => {
+        e.preventDefault()
+        loginFormHandler(formData)
+    }
+
+    return (
+        <div className="login-container">
+
+            <form className="form" onSubmit={(e) => loginSubmitHandler(e)}>
                 <div className="form-header">
                     <h2 className="form-heading">Login</h2>
                 </div>
@@ -25,8 +35,8 @@ export const Login = (loginFormHandler, setFormData, formData, error) => {
                         value={formData.email}
                     />
 
-                    
-                    <p className="text-sm error">{error}</p>
+
+                    <p className="text-sm error"></p>
                 </div>
 
                 <div className="input-row">
@@ -55,7 +65,7 @@ export const Login = (loginFormHandler, setFormData, formData, error) => {
 
                 <div className="input-row">
                     <button className="btn btn-primary btn-submit text-md">Login</button>
-                    <p className="text-credential center text-sm" onClick={() => setFormData({email: "pritamvr9@gmail.com", password: "pritam123"})} >Login with Test Credential</p>
+                    <p className="text-credential center text-sm" onClick={() => setFormData({ email: "pritamvr9@gmail.com", password: "pritam123" })} >Login with Test Credential</p>
                 </div>
 
                 <div className="form-footer">
@@ -67,7 +77,7 @@ export const Login = (loginFormHandler, setFormData, formData, error) => {
                         </Link>{" "}
                     </p>
                 </div>
-    </form> */}
-    </div>
-  );
+            </form>
+        </div>
+    );
 };
