@@ -1,28 +1,29 @@
 import React from "react";
 import "./Explore.css";
-import { Sidebar } from "../../Component/index";
-
+import {VideoCard,Gif} from "../../Component/index"
+import {useVideoContext} from "../../Context/Index"
+ 
 
 export const Explore = () => {
+
+    const {getUniqueCategory, dispatch, getFilteredVideo} = useVideoContext()
+   
+    
+
     return (
-        <div className="explore-container">
-            <Sidebar />
+        <div className="explore-container main-container">
             <div className="video-list-container">
                 
                 <div className="categories-wrapper">
                     <ul>
-                        <li className="category-list">All</li>
-                        <li className="category-list">Front-end</li>
-                        <li className="category-list">Back-end</li>
-                        <li className="category-list">Game</li>
-                        <li className="category-list">API</li>
-                        <li className="category-list">Reactjs</li>
+                      <li className={getUniqueCategory?.length === 5 ? "category-list active" : "category-list"} onClick={() => dispatch({type: "FILTER_RESET"})}>All</li> 
+                        {getUniqueCategory?.map((eachCategory, i) => <li className="category-list" onClick={() => dispatch({type: "GET_CATEGORY_NAME", payload: eachCategory})} key={i}>{eachCategory}</li>)}
                     </ul>
                 </div>
 
                 {/* Video listing cards will show here */}
                 <div className="video-container">
-                    <h1>Explore</h1>
+                     {getFilteredVideo.length === 0 ? <Gif />: getFilteredVideo?.map((eachVideo) => <VideoCard  eachVideo={eachVideo} key={eachVideo.id}/> ) }
                 </div>
             </div>
         </div>
