@@ -23,8 +23,6 @@ function App() {
 
       {pathname !== "/" && <Topbar />}
       <SideBar />
-      {/* {pathname !== "/login" && <Topbar />} */}
-      {/* {pathname !== "/" && <Sidebar />} */}
       <Routes>
         <Route path="/" element={<Home />} ></Route>
         <Route path="/explore" element={<Explore />}></Route>
