@@ -1,27 +1,38 @@
 import React from "react"
 import {descriptionShort, titleShort} from "../../Utils/Index"
 import * as FaIcons from "react-icons/fa";
-import * as BiIcons from "react-icons/bi";
 import "./VideoCard.css"
+import {useNavigate} from "react-router-dom"
 
 export const VideoCard = ({eachVideo}) => {
+    const navigate = useNavigate()
+
+    //Doing Destructure 
+    const {_id, thumbnail, creatorImg, title, description, creator} = eachVideo
+
+    const singleVideoHandler = () => {
+        //doing navigate to videoId
+        navigate(`/video/${_id}`)
+    }
+
+
     return (
         <div className="card-box video-card">
             <img
-                src={eachVideo.thumbnail}
-                alt=""
-                className="responsive-images video-thumbnail"
+                src={thumbnail}
+                alt={title}
+                className="responsive-images video-thumbnail" onClick={() => singleVideoHandler()}
             />
             <div className="card-content ">
                 <div className="space-between">
                     <div className="center">
                         <img
-                            src={eachVideo.creatorImg}
+                            src={creatorImg}
                             alt="creator-img"
                             className="avatar img-responsive img-rounded avatar-ex-small creator-avatar"
                         />
                         <h2 className="card-title video-title">
-                            {titleShort(eachVideo.title)}
+                            {titleShort(title)}
                         </h2>
                     </div>
 
@@ -29,9 +40,9 @@ export const VideoCard = ({eachVideo}) => {
                         <FaIcons.FaEllipsisV className="icons card-icon" />
                     </p>
                 </div>
-                <p className="creator-title text-xm">{eachVideo.creator} <FaIcons.FaCheckCircle className="icons" /></p>
+                <p className="creator-title text-xm">{creator} <FaIcons.FaCheckCircle className="icons" /></p>
                 <p className="card-text video-description">
-                    {descriptionShort(eachVideo.description)}
+                    {descriptionShort(description)}
                 </p>
             </div>
         </div>

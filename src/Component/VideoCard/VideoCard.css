@@ -6,8 +6,11 @@
     gap: 1rem;
     max-width: 100rem;
     margin: 0 auto;
-  
+    min-height: 50vh;
+
   }
+
+  
   
   .video-card {
     padding: 0;
