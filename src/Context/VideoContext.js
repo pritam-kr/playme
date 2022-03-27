@@ -16,8 +16,6 @@ export const VideoContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(videoReducer, initialState);
   const { videos, categoryName } = state;
 
-  console.log(videos)
-
   // getting all categories name
   const getUniqueCategory = uniqueCategory(videos, "categoryName");
 
