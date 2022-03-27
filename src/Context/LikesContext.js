@@ -7,6 +7,7 @@ import {
 } from "react";
 import axios from "axios";
 import { useAuthContext } from "./Index";
+import {toast} from "react-hot-toast"
 
 const initialState = {
   likedVideo: [],
@@ -39,14 +40,14 @@ export const LikesContextProvider = ({ children }) => {
                       },
                 })
 
-                if(status === 200){
+                if(status === 200){ 
                     dispatch({type: "GET_LIKED_VIDEO", payload: likes})
                 }
-                 
                  
             }
             catch(error){
                 console.log(error.response)
+                toast.error("Error occurred While fetching video")
             }
       })();
 
