@@ -3,9 +3,14 @@ import * as FaIcons from "react-icons/fa";
 import * as BiIcons from "react-icons/bi";
 import "./Topbar.css";
 import { useNavigate } from "react-router-dom"
+import {useAuthContext} from "../../Context/Index"
 
 const Topbar = () => {
   const navigate = useNavigate()
+  const {isAuth} = useAuthContext()
+  
+  // console.log(isAuth)
+ 
   return (
     //Top bar
     <header className="topbar">
@@ -29,9 +34,9 @@ const Topbar = () => {
         </div>
         <div className="topbar-right">
           <div className="auth-wrapper">
-            <button className="btn btn-primary btn-nav-login center" onClick={() => navigate("/login")}>
+            {!isAuth ? <button className="btn btn-primary btn-nav-login center" onClick={() => navigate("/login")}>
               <FaIcons.FaUserCircle className="icons login-icon" /> <span className="login-text">Login</span>
-            </button>
+            </button> : <button className="btn btn-primary logged-user-icon center"><FaIcons.FaUserCircle className="icons login-icon"/></button>}
           </div>
         </div>
       </div>

@@ -4,9 +4,10 @@ import * as BiIcons from "react-icons/bi";
 import "./Navigation.css"
 import {useNavigate} from "react-router-dom"
 
-const Navigation = () => {
 
+const Navigation = () => {
     const navigate = useNavigate()
+    
 
     return (
         <nav className="nav">

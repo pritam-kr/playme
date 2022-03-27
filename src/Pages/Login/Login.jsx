@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom"
 import { useAuthContext } from "../../Context/Index"
-
+ 
 
 export const Login = () => {
 
     const [formData, setFormData] = useState({ email: "", password: "" })
-    const { loginFormHandler } = useAuthContext()
+    const { loginFormHandler, error } = useAuthContext()
 
     const loginSubmitHandler = (e) => {
         e.preventDefault()
@@ -36,7 +36,7 @@ export const Login = () => {
                     />
 
 
-                    <p className="text-sm error"></p>
+                    <p className="text-sm error">{error}</p>
                 </div>
 
                 <div className="input-row">

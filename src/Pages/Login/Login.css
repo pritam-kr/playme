@@ -16,3 +16,6 @@
     text-decoration: underline;
     cursor: pointer;
 }
+.error{
+    padding: 0;
+}
