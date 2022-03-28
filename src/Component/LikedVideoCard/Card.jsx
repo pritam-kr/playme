@@ -40,7 +40,7 @@ const Card = ({eachVideo}) => {
                     <p className="center" onClick={() => removeLikedVideo(eachVideo)}> <FaIcons.FaTrash className="icons tools-icon" /></p>
                 </div>
 
-                <button className="btn-popup" onMouseEnter={() => setTool(true)} onClick={() => setTool(false)}>
+                <button className="btn-popup"   onClick={() => setTool(!tool)}>
                     <FaIcons.FaEllipsisV className="icons card-icon" />
                 </button>
             </div>

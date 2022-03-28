@@ -99,7 +99,7 @@ export const LikesContextProvider = ({ children }) => {
           likesDispatch({type: "REMOVE_LIKED_VIDEO", payload: likes})
         }
       } catch (error) {
-
+        toast.error("Error occurred in remove liked video", {position: "top-right"})
       }
     }
   };
