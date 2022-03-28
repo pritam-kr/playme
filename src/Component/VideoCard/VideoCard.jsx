@@ -3,9 +3,10 @@ import {descriptionShort, titleShort} from "../../Utils/Index"
 import * as FaIcons from "react-icons/fa";
 import "./VideoCard.css"
 import {useNavigate} from "react-router-dom"
-import {useLikesContext, useHistoryContext} from "../../Context/Index"
+import {useLikesContext, useHistoryContext, useAuthContext} from "../../Context/Index"
 
 export const VideoCard = ({eachVideo}) => {
+    const {isAuth} = useAuthContext()
     const navigate = useNavigate()
     const [tool, setTool] = useState(false)
 
@@ -26,9 +27,10 @@ export const VideoCard = ({eachVideo}) => {
 
     //Tool handler
     const toolHandler = () => {
-       setTool(false)
+       
        // sending liked video object to likes context
-       saveLikedVideo(eachVideo)
+       (isAuth ? saveLikedVideo(eachVideo) :navigate("/login"))
+       setTool(false)
     }
    
     return (

@@ -1,13 +1,17 @@
 import React from "react";
 import "./Sidebar.css";
 import * as FaIcons from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { useAuthContext } from "../../Context/Index";
 
 const Sidebar = () => {
   const { isAuth } = useAuthContext();
   const navigate = useNavigate()
 
+  const {pathname} = useLocation()
+
+  
+ 
   return (
     <>
       <div className="sidebar-wrapper">

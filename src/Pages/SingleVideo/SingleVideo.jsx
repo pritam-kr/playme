@@ -2,17 +2,20 @@ import React from "react";
 import "./SingleVideo.css";
 import { VideoIframe } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
-import { useParams } from "react-router-dom";
-import { useVideoContext, useLikesContext } from "../../Context/Index";
+import { useParams, useNavigate } from "react-router-dom";
+import { useVideoContext, useLikesContext, useAuthContext } from "../../Context/Index";
 import { useState } from "react";
 
 export const SingleVideo = () => {
+
+    const {isAuth} = useAuthContext()
+    const navigate = useNavigate()
+
     const {
         state: { videos },
         getFilteredVideo,
     } = useVideoContext();
 
-  
     const { videoId } = useParams();
     //For Liked Video
     const {
@@ -52,7 +55,7 @@ export const SingleVideo = () => {
                             <ul>
                                 <li
                                     className="text-lg btn-likes"
-                                    onClick={() => likeVideoHandler()}
+                                    onClick={() => (isAuth?likeVideoHandler():navigate("/login")) }
                                 >
                                     <FaIcons.FaThumbsUp className="icons sidebar-icons" /> Like
                                 </li>

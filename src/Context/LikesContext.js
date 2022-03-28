@@ -45,6 +45,7 @@ export const LikesContextProvider = ({ children }) => {
 
   const saveLikedVideo = async (video) => {
     if (likedVideo.find((eachVideo) => eachVideo._id === video._id)) {
+      toast.error("Video already liked!" , { position: "top-right" });
       return;
     } else {
       try {
