@@ -1,0 +1,13 @@
+ 
+ .btn-clear .icons{
+    color: var(--white-text);
+     margin-right: .5rem;
+}
+.btn-clear{
+    padding: .8rem 1.5rem;
+    border-radius: 10rem;
+}
+
+.history-video-wrapper{
+    justify-content: flex-start;
+}

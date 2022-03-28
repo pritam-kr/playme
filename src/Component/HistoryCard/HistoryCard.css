@@ -1,0 +1,26 @@
+.history-video-wrapper .horizontal-cart-card {
+    max-width: 100rem;
+    max-height: 15rem;
+}
+
+.history-card {
+    box-shadow: none;
+    width: 100%;
+    border-radius: 0;
+    background: transparent;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.history-card .video-content {
+    padding: 1rem;
+    width: 100%;
+    justify-content: flex-start;
+    background-color: var(--dark-background-color);
+}
+
+.history-card .card-img {
+    max-width: 25rem;
+    border-radius: 0;
+    cursor: pointer;
+}
