@@ -21,6 +21,7 @@ export const AuthContextProvider = ({ children }) => {
 
     //setting to useState
     const [isAuth, setIsAuth] = useState("");
+     
     const [user, setUser] = useState( "");
 
     useEffect(() => {
@@ -64,7 +65,7 @@ export const AuthContextProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ loginFormHandler, isAuth, user, error }}>
+        <AuthContext.Provider value={{ loginFormHandler, isAuth, user, error, setIsAuth }}>
             {children}
         </AuthContext.Provider>
     );

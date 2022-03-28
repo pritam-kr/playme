@@ -3,13 +3,28 @@ import "./Sidebar.css";
 import * as FaIcons from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../Context/Index";
+import {toast} from "react-hot-toast"
 
 const Sidebar = () => {
-  const { isAuth } = useAuthContext();
+  const { isAuth, setIsAuth } = useAuthContext();
   const navigate = useNavigate();
 
   const { pathname } = useLocation();
 
+  //Logout Handler
+  
+  const logoutHandler = () => {
+    if(isAuth){
+      setIsAuth("")
+      localStorage.removeItem("login-token")
+      localStorage.removeItem("user")
+      toast.success("User Logout!!", {position: "top-right"})
+    }else{
+      navigate("/login")
+    }
+  }
+  
+  
   return (
     <>
       <div className="sidebar-wrapper">
@@ -52,7 +67,7 @@ const Sidebar = () => {
           >
             <FaIcons.FaHistory className="icons sidebar-icons" /> History
           </li>
-          <li className="sidebar-links sidebar-logout text-lg logout-list">
+          <li className="sidebar-links sidebar-logout text-lg " onClick={() => logoutHandler()}>
             <FaIcons.FaUserCircle className="icons sidebar-icons" /> Logout
           </li>
         </ul>
