@@ -18,6 +18,10 @@
   padding: 1rem 0;
 }
 
+.video-info .icons{
+  color: var(--white-text);
+}
+
 .video-info ul {
   margin: 1rem 0;
 }
@@ -30,6 +34,12 @@
   margin-right: 1rem;
   font-size: 1rem;
   border-radius: 10rem;
+  transition: .3s all;
+}
+
+.video-info li:hover{
+  background-color: var(--primary-color);
+  cursor: pointer;
 }
 
 .video-info .creator-name {
@@ -37,6 +47,7 @@
   justify-content: flex-start;
   align-items: center;
   color: var(--secondary-text);
+  margin: 1rem 0;
 }
 
 .video-info .verified-icon {
