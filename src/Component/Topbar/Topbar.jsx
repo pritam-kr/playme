@@ -2,15 +2,14 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as BiIcons from "react-icons/bi";
 import "./Topbar.css";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import {useAuthContext} from "../../Context/Index"
 
 const Topbar = () => {
   const navigate = useNavigate()
   const {isAuth} = useAuthContext()
   
-  // console.log(isAuth)
- 
+  
   return (
     //Top bar
     <header className="topbar">
@@ -18,8 +17,8 @@ const Topbar = () => {
         <div className="topbar-left">
         <FaIcons.FaBars className="icons hamburger-icons" />
           <div className="logo-wrapper"> 
-            <FaIcons.FaPlayCircle className="icons topbar-logo-icon" />
-            <h3 className="topbar-logo">PlayMe</h3>
+            <Link to="/explore" className="center"><FaIcons.FaPlayCircle className="icons topbar-logo-icon" />
+            <h3 className="topbar-logo">PlayMe</h3></Link>
           </div>
         </div>
         <div className="topbar-center">

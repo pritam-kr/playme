@@ -20,6 +20,9 @@ font-family: 'Roboto', sans-serif; */
     --smooth-shadow: 0px 0px 10px 4px rgb(0 0 0 / 5%);
     --border-color: rgba(206, 204, 204, 0.328);
     --secondary-text: #909090;
+    --tools-bg: rgba(27, 119, 223, 0.76);
+    --video-bg: #070d1b;
+
 }
 
 
@@ -50,7 +53,11 @@ h6 {
 
 li {
     list-style-type: none;
-
+    text-decoration: none;
+}
+a{
+    color: var(--white-text);
+    text-decoration: none;
 }
 
 ::placeholder{
@@ -65,18 +72,31 @@ label, button, ::placeholder {
     font-family: 'Lato', sans-serif;
 }
 
+ 
 .icons{
     color: var(--primary-color);
     cursor: pointer;
 }
 
-
 /*common main container CSS */
-
 .main-container{
     margin-left: 0rem;
     padding: 1.5rem;
     margin-top: 5rem;
+}
+
+.main-container-header {
+    color: var(--white-text);
+}
+
+.playlist-wrapper{
+ max-width: 100rem;
+ padding: 1rem 0;
+ margin: 0 auto;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 1rem;
 }
 
 @media screen and (min-width: 776px) {
