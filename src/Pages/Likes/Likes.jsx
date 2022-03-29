@@ -1,7 +1,8 @@
 import React from "react";
 import "./Likes.css";
-import { Card } from "../../Component/index";
+import { Card, FixedLoader } from "../../Component/index";
 import { useLikesContext } from "../../Context/Index";
+
 
 const Likes = () => {
   const {
@@ -14,7 +15,7 @@ const Likes = () => {
         <h1 className="text-md">Liked Video ({likedVideo.length})</h1>
       </header>
       <div className="playlist-wrapper liked-video-wrapper">
-        {likedVideo?.map((eachVideo) => (
+      { likedVideo?.length === 0 ? <FixedLoader message={"There is no Liked video. Please add 😊"} /> : likedVideo?.map((eachVideo) => (
           <Card key={eachVideo._id} eachVideo={eachVideo} />
         ))}
       </div>

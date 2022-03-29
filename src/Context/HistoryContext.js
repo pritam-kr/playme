@@ -67,11 +67,7 @@ export const HistoryContextProvider = ({ children }) => {
               historyDispatch({ type: "HISTORY_SAVED", payload: history });
             }
           } catch (error) {
-            const {
-              data: { errors },
-            } = error.response;
-            console.log(errors);
-            toast.error(...errors, { position: "top-right" });
+            toast.error("Error occured in History context", { position: "top-right" });
           }
 
     }

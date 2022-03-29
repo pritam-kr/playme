@@ -3,7 +3,7 @@ import {descriptionShort, titleShort} from "../../Utils/Index"
 import * as FaIcons from "react-icons/fa";
 import "./VideoCard.css"
 import {useNavigate} from "react-router-dom"
-import {useLikesContext, useHistoryContext, useAuthContext} from "../../Context/Index"
+import {useLikesContext, useHistoryContext, useAuthContext, useWatchLaterContext} from "../../Context/Index"
 
 export const VideoCard = ({eachVideo}) => {
     const {isAuth} = useAuthContext()
@@ -15,6 +15,9 @@ export const VideoCard = ({eachVideo}) => {
 
     //For History Video
     const {addHistoryVideo} = useHistoryContext()
+
+    //For Watchlater video
+    const {addToWatchLater} = useWatchLaterContext()
     
     //Doing Destructure 
     const {_id, thumbnail, creatorImg, title, description, creator} = eachVideo
@@ -25,13 +28,19 @@ export const VideoCard = ({eachVideo}) => {
         addHistoryVideo(eachVideo)
     }
 
-    //Tool handler
-    const toolHandler = () => {
-       
+    //like handler
+    const likedHandler = () => {
        // sending liked video object to likes context
        (isAuth ? saveLikedVideo(eachVideo) :navigate("/login"))
        setTool(false)
     }
+
+    // Watch Later Handler 
+    const watchLaterHandler = () => {
+        (isAuth ? addToWatchLater(eachVideo) :navigate("/login"))
+        setTool(false)
+    }
+        
    
     return (
         <div className="card-box video-card">
@@ -54,11 +63,11 @@ export const VideoCard = ({eachVideo}) => {
                     </div>
                     
                     <div className="tools space-between" style={tool ? {display: "flex"}: {display: "none"}}>
-                       <p className="center" onClick={() => toolHandler()}> <FaIcons.FaThumbsUp className="icons tools-icon"/></p>
-                      <p  className="center"  onClick={() =>toolHandler()}>  <FaIcons.FaClock className="icons tools-icon"/></p>
+                       <p className="center" onClick={() => likedHandler()}> <FaIcons.FaThumbsUp className="icons tools-icon liked-cons"/></p>
+                      <p  className="center"  onClick={() =>watchLaterHandler()}>  <FaIcons.FaClock className="icons tools-icon watchLater-icon"/></p>
                     </div>
 
-                    <button className="btn-popup"  onMouseEnter={() => setTool(true)} onClick={() => setTool(false)}>
+                    <button className="btn-popup"  onClick={() => setTool(!tool)}>
                         <FaIcons.FaEllipsisV className="icons card-icon"/> 
                     </button>
                 </div>

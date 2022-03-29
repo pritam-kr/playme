@@ -8,6 +8,7 @@ import {
   AuthContextProvider,
   LikesContextProvider,
   HistoryContextProvider,
+  WatchLaterContextProvider
 } from "./Context/Index";
 // Call make Server
 makeServer();
@@ -19,7 +20,9 @@ ReactDOM.render(
         <VideoContextProvider>
           <LikesContextProvider>
             <HistoryContextProvider>
+              <WatchLaterContextProvider>
               <App />
+              </WatchLaterContextProvider>
             </HistoryContextProvider>
           </LikesContextProvider>
         </VideoContextProvider>

@@ -1,19 +1,25 @@
 import React, { useState } from 'react'
-import "./Card.css"
+import "./WatchLaterCard.css"
 import * as FaIcons from "react-icons/fa";
 import { titleShort, descriptionShort } from "../../Utils/Index"
 import {useNavigate} from "react-router-dom"
-import {useLikesContext} from "../../Context/Index"
+import {useWatchLaterContext} from "../../Context/Index"
 
-const Card = ({eachVideo}) => {
+const WatchLaterCard = ({eachVideo}) => {
     const navigate = useNavigate()
-    const {removeLikedVideo} = useLikesContext()
+    const {removeWatchLater} =  useWatchLaterContext()
+    
     const [tool, setTool] = useState(false)
     const { _id, thumbnail, title, creatorImg, creator, description } = eachVideo
 
     const singleVideoHandler = (_id) => {
         //doing navigate to videoId
         navigate(`/video/${_id}`)
+    }
+
+    const removeWatchLaterVideoHandler = ()=>{
+        removeWatchLater(eachVideo)
+        setTool(false)
     }
 
     return (
@@ -37,10 +43,10 @@ const Card = ({eachVideo}) => {
                 </div>
 
                 <div className="tools space-between" style={tool ? {display: "flex"}: {display: "none"}}>
-                    <p className="center" onClick={() => removeLikedVideo(eachVideo)}> <FaIcons.FaTrash className="icons tools-icon" /></p>
+                    <p className="center" onClick={() => removeWatchLaterVideoHandler()}> <FaIcons.FaTrash className="icons tools-icon" /></p>
                 </div>
 
-                <button className="btn-popup"   onClick={() => setTool(!tool)}>
+                <button className="btn-popup"  onClick={() => setTool(!tool)}>
                     <FaIcons.FaEllipsisV className="icons card-icon" />
                 </button>
             </div>
@@ -55,4 +61,4 @@ const Card = ({eachVideo}) => {
 
 
 
-export { Card }
+export { WatchLaterCard }

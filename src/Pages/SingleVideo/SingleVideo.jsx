@@ -3,7 +3,7 @@ import "./SingleVideo.css";
 import { VideoIframe } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
-import { useVideoContext, useLikesContext, useAuthContext } from "../../Context/Index";
+import { useVideoContext, useLikesContext, useAuthContext, useWatchLaterContext} from "../../Context/Index";
 import { useState } from "react";
 
 export const SingleVideo = () => {
@@ -20,8 +20,10 @@ export const SingleVideo = () => {
     //For Liked Video
     const {
         saveLikedVideo,
-        state: { likedVideo },
     } = useLikesContext();
+
+    // For Watch Later Video 
+    const {addToWatchLater} = useWatchLaterContext()
 
     // Now match params video ID from existing videos data
     const isVideo = getFilteredVideo?.find(
@@ -30,6 +32,11 @@ export const SingleVideo = () => {
     // liked video
     const likeVideoHandler = () => {
         saveLikedVideo(isVideo);
+    };
+
+     // watch later video
+     const watchLaterVideoHandler = () => {
+        addToWatchLater(isVideo)
     };
 
     return (
@@ -60,8 +67,8 @@ export const SingleVideo = () => {
                                     <FaIcons.FaThumbsUp className="icons sidebar-icons" /> Like
                                 </li>
 
-                                <li className="text-lg">
-                                    <FaIcons.FaArchive className="icons sidebar-icons" /> Watch
+                                <li className="text-lg" onClick={() => (isAuth?watchLaterVideoHandler():navigate("/login")) }>
+                                    <FaIcons.FaClock className="icons sidebar-icons" /> Watch
                                     Later
                                 </li>
                             </ul>
