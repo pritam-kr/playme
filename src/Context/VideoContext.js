@@ -18,7 +18,7 @@ export const VideoContextProvider = ({ children }) => {
   const { videos, categoryName } = state;
 
   //Use State for Sidebar 
-  const [activeSidebar, setActiveSidebar]  = useState(false)
+  const [activeSidebar, setActiveSidebar]  = useState(true)
    
 
   // getting all categories name
