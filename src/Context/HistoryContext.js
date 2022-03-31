@@ -40,9 +40,9 @@ export const HistoryContextProvider = ({ children }) => {
     }
   }, [isAuth]);
 
-  const addHistoryVideo = async (video) => {
+  const addHistoryVideo = async (video) => { 
     if (watchedVideo.find((eachVideo) => eachVideo._id === video._id)) {
-      return;
+      deleteHistory(video.id)
     } else {
       try {
         const {
@@ -92,12 +92,22 @@ export const HistoryContextProvider = ({ children }) => {
     }
   };
 
+  const deleteHistory = async(videoId) => {
+      try{
+          const {data:{history}, status} = await axios.delete(`/api/user/history/${videoId}`, {headers: {authorization: isAuth}})
+          
+          if(status === 200){
+            historyDispatch({type: "DELETE_HISTORY", payload: history})
+          }
+      }catch(error){
+
+      }
+  }
+
   return (
     <HistoryContext.Provider
-      value={{ state, historyDispatch, addHistoryVideo, clearHistory }}
-    >
-      {" "}
-      {children}{" "}
+      value={{ state, historyDispatch, addHistoryVideo, clearHistory, deleteHistory }}>
+      {children} 
     </HistoryContext.Provider>
   );
 };
