@@ -21,7 +21,7 @@ export const videos = [
   {
     videoLink: "https://www.youtube.com/watch?v=B-s1kqy62FM",
     _id: "B-s1kqy62FM",
-    title: "launching neog.camp: roadmap to full stack dev",
+    title: "Your First Web 3.0 App",
     description:
       "Learn Web 3.0 from zero. In this video, Madhavan (Founder, questbook), teaches Tanay how to write his first smart contract. ",
     creator: "Tanay Pratap",

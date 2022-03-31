@@ -1,0 +1,26 @@
+.playlist-card {
+    min-width: 30rem;
+    cursor: pointer;
+    min-height: 17rem;
+}
+
+.playlist-card .playlist-image {
+    border-radius: 0;
+    height: 16rem;
+    min-height: 17rem;
+}
+
+.playlist-info {
+    position: relative;
+}
+
+.playlist-title {
+    position: absolute;
+    bottom: 0rem;
+    text-align: center;
+    padding: 1rem;
+    left: 0;
+    right: 0;
+    color: var(--white-text);
+    background-color: var(--dark-background-color);
+}

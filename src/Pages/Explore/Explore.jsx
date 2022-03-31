@@ -3,8 +3,6 @@ import "./Explore.css";
 import {VideoCard,Gif} from "../../Component/index"
 import {useVideoContext} from "../../Context/Index"
 
- 
-
 export const Explore = () => {
 
     const {getUniqueCategory, dispatch, getFilteredVideo} = useVideoContext()

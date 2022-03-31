@@ -8,8 +8,7 @@
     width: 100%;
     border-radius: 0;
     background: transparent;
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+     
 }
 
 .history-card .video-content {
@@ -17,6 +16,10 @@
     width: 100%;
     justify-content: flex-start;
     background-color: var(--dark-background-color);
+}
+
+.history-card .creator-title{
+    margin-bottom: .5rem;
 }
 
 .history-card .card-img {

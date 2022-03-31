@@ -1,7 +1,7 @@
 import "./App.css";
 import { Home } from "./Pages/Index";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { Explore,Login, Playlist, SingleVideo, WatchLater , Likes, History} from "./Pages/Index";
+import { Explore,Login, Playlist, SingleVideo, WatchLater , Likes, History,PlaylistVideos} from "./Pages/Index";
 import {Sidebar, Topbar,MockAPI} from "./Component/index"
 import {useAuthContext} from "./Context/AuthContext"
 import {Toaster} from "react-hot-toast"
@@ -37,6 +37,7 @@ const PrivateRoute = ({children}) =>{
         <Route path="/likes" element={<PrivateRoute><Likes /></PrivateRoute>} > </Route>
         <Route path="/watchlater" element={<PrivateRoute><WatchLater /></PrivateRoute>} > </Route>
         <Route path="/*" element={<Navigate  to="/explore" />}></Route>  
+        <Route path="/playlist/:playlistId" element={<PrivateRoute><PlaylistVideos /></PrivateRoute>} > </Route>
       </Routes>
     </div>
     </>
