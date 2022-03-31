@@ -10,7 +10,6 @@
 
 .categories-wrapper {
   margin: 0rem 0 1rem 0;
- 
   background-color: var(--dark-background-color);
   display: flex;
   justify-content: flex-start;
@@ -18,6 +17,7 @@
   padding: 0 .5rem;
 }
 
+ 
 .categories-wrapper ul {
   display: flex;
   flex-wrap: wrap;
@@ -32,7 +32,7 @@
   color: var(--white-text);
   background-color: var(--background-color);
   border-radius: 10rem;
-  transition: 0.3s all;
+  transition: 0.3s ease-in;
   font-size: 1rem;
   margin: 0.3rem 0.3rem 0.3rem 0;
 }

@@ -1,15 +1,25 @@
+ 
+ .sidebar-links-wrapper a{
+    font-size: 1.4rem;
+}
+
 .sidebar-wrapper{
-    border-right: 1px solid #fff;
-    background-color: var(--dark-background-color);
-    max-width: 20rem;
+     
+    background-color: #020712fb;
+    max-width: 22rem;
     min-height: 90vh;
     color: var(--white-text);
-    width: 0;
+    width: 0rem;
     overflow: hidden;
     position: fixed;
     top: 0;
     bottom: 0;
     margin-top: 5rem;
+    z-index: 999;
+}
+
+.active-sidebar{
+    width: 20rem;
 }
  
 .sidebar-links-wrapper{
@@ -33,6 +43,9 @@
 
 @media screen and (min-width: 767px) {
     .sidebar-wrapper{
+        width: 20rem;
+    }
+    .active-sidebar{
         width: 20rem;
     }
 }

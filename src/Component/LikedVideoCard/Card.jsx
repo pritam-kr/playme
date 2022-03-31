@@ -37,7 +37,7 @@ const Card = ({eachVideo}) => {
                 </div>
 
                 <div className="tools space-between" style={tool ? {display: "flex"}: {display: "none"}}>
-                    <p className="center" onClick={() => removeLikedVideo(eachVideo)}> <FaIcons.FaTrash className="icons tools-icon" /></p>
+                    <button className="center" onClick={() => removeLikedVideo(eachVideo)}> <FaIcons.FaTrash className="icons tools-icon" /></button>
                 </div>
 
                 <button className="btn-popup"   onClick={() => setTool(!tool)}>
