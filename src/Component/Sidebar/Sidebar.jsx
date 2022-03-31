@@ -1,7 +1,7 @@
 import React from "react";
 import "./Sidebar.css";
 import * as FaIcons from "react-icons/fa";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuthContext } from "../../Context/Index";
 import {toast} from "react-hot-toast"
 
@@ -12,7 +12,6 @@ const Sidebar = () => {
   const { pathname } = useLocation();
 
   //Logout Handler
-  
   const logoutHandler = () => {
     if(isAuth){
       setIsAuth("")
@@ -38,8 +37,10 @@ const Sidebar = () => {
           >
             <FaIcons.FaCompass className="icons sidebar-icons" /> Explore
           </li>
-          <li className="sidebar-links sidebar-playlist text-lg">
-            <FaIcons.FaFolder className="icons sidebar-icons" /> Playlist
+          <li className="sidebar-links sidebar-playlist text-lg" onClick={() => {
+            !isAuth ? navigate("/login") : navigate("/playlist");
+          }}>
+          <FaIcons.FaFolderPlus className="icons sidebar-icons" /> Playlist
           </li>
 
           <li

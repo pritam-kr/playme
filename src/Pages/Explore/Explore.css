@@ -10,15 +10,19 @@
 
 .categories-wrapper {
   margin: 0rem 0 1rem 0;
-  border-bottom: 1px solid var(--border-color);
-  
+ 
+  background-color: var(--dark-background-color);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 .5rem;
 }
 
 .categories-wrapper ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-bottom: .5rem;
+  margin: .5rem 0;
 }
 
 .category-list {
@@ -26,7 +30,7 @@
   padding: 0.8rem 1.5rem;
   text-align: center;
   color: var(--white-text);
-  background-color: var(--dark-background-color);
+  background-color: var(--background-color);
   border-radius: 10rem;
   transition: 0.3s all;
   font-size: 1rem;
