@@ -15,12 +15,8 @@ const Hero = () => {
   } = useVideoContext();
 
   const categoryHandler = (category) => {
-    if (isAuth) {
-      dispatch({ type: "VIDEOS_CATEGORY_NAME", payload: category });
-      navigate("/explore");
-    } else {
-      navigate("/login");
-    }
+    dispatch({ type: "VIDEOS_CATEGORY_NAME", payload: category });
+    navigate("/explore");
   };
 
   return (
@@ -39,7 +35,7 @@ const Hero = () => {
             onClick={() => navigate("/explore")}
           >
             <BiIcons.BiVideoPlus className="icons video-icon" />
-            Explore 
+            Explore
           </button>
         </div>
 
