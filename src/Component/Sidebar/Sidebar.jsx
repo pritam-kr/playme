@@ -1,35 +1,14 @@
 import React from "react";
 import "./Sidebar.css";
 import * as FaIcons from "react-icons/fa";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useAuthContext, useVideoContext } from "../../Context/Index";
-import { toast } from "react-hot-toast"
-import { useState } from "react/";
-
+ 
 const Sidebar = () => {
-  const { isAuth, setIsAuth } = useAuthContext();
+  const { isAuth,  logoutHandler } = useAuthContext();
   const navigate = useNavigate();
-
   const {activeSidebar} = useVideoContext()
-
-  console.log(activeSidebar)
-
-  const { pathname } = useLocation();
-
-  //Logout Handler
-  const logoutHandler = () => {
-    if (isAuth) {
-      setIsAuth("")
-      localStorage.removeItem("login-token")
-      localStorage.removeItem("user")
-      toast.success("User Logout!!", { position: "top-right" })
-    } else {
-      navigate("/login")
-    }
-  }
-
-
-
+  
   const getActiveStyle = ({ isActive }) => ({
     backgroundColor: isActive ? "var(--background-color)" : ""
   })
@@ -79,9 +58,11 @@ const Sidebar = () => {
           >
             <FaIcons.FaHistory className="icons sidebar-icons" /> History
           </NavLink>
-          <NavLink to="/logout" style={getActiveStyle} className="sidebar-links sidebar-logout text-lg " onClick={() => logoutHandler()}>
+         {!isAuth ?  <NavLink to="/login" style={getActiveStyle} className="sidebar-links sidebar-logout text-lg " onClick={() => navigate('/login')}>
+            <FaIcons.FaUserCircle className="icons sidebar-icons" /> Login
+          </NavLink> :  <NavLink to="/logout" style={getActiveStyle} className="sidebar-links sidebar-logout text-lg " onClick={() => logoutHandler()}>
             <FaIcons.FaUserCircle className="icons sidebar-icons" /> Logout
-          </NavLink>
+          </NavLink>}
         </ul>
       </div>
     </>

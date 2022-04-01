@@ -24,7 +24,7 @@ export const Playlist = () => {
         <header className="main-container-header space-between">
           <h1 className="text-md">Playlist ({playlists?.length})</h1>
 
-          <button className="btn btn-primary" onClick={() => setCreatePlaylistModal(true)}>Create Playlist</button>
+          <button className="btn btn-primary center" onClick={() => setCreatePlaylistModal(true)}><FaIcons.FaPlusCircle className="icons" />Playlist</button>
         </header>
 
         <div className="playlist-wrapper playlist-video-wrapper">

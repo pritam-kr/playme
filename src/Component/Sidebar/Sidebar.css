@@ -6,16 +6,17 @@
 .sidebar-wrapper{
      
     background-color: #020712fb;
-    max-width: 22rem;
+    max-width: 25rem;
     min-height: 90vh;
     color: var(--white-text);
     width: 0rem;
-    overflow: hidden;
+    overflow-y: scroll;
     position: fixed;
     top: 0;
     bottom: 0;
     margin-top: 5rem;
     z-index: 999;
+   
 }
 
 .active-sidebar{

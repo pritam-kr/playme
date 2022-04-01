@@ -16,7 +16,7 @@ const Hero = () => {
                 <p className="text-lg" style={{ marginTop: "1rem" }}>PlayMe is a learning platform for students.</p>
                 <div className="searchbar-wrapper center">
                     <button className="btn btn-explore center" onClick={() => navigate("/explore")}>
-                        <BiIcons.BiVideoPlus className="icons video-icon" /> Watch Now </button>
+                        <BiIcons.BiVideoPlus className="icons video-icon" />Explore </button>
                 </div>
                 <FaIcons.FaGithub />
             </div>

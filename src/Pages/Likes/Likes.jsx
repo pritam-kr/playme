@@ -16,7 +16,7 @@ const Likes = () => {
       </header>
       <div className="playlist-wrapper liked-video-wrapper">
       { likedVideo?.length === 0 ? <FixedLoader message={"There is no Liked video. Please add 😊"} /> : likedVideo?.map((eachVideo) => (
-          <Card key={eachVideo._id} eachVideo={eachVideo} />
+             <Card key={eachVideo._id} eachVideo={eachVideo} />
         ))}
       </div>
     </div>

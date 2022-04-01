@@ -3,11 +3,12 @@ import "./WatchLaterCard.css"
 import * as FaIcons from "react-icons/fa";
 import { titleShort, descriptionShort } from "../../Utils/Index"
 import {useNavigate} from "react-router-dom"
-import {useWatchLaterContext} from "../../Context/Index"
+import {useWatchLaterContext, useHistoryContext} from "../../Context/Index"
 
 const WatchLaterCard = ({eachVideo}) => {
     const navigate = useNavigate()
     const {removeWatchLater} =  useWatchLaterContext()
+    const {addHistoryVideo} = useHistoryContext()
     
     const [tool, setTool] = useState(false)
     const { _id, thumbnail, title, creatorImg, creator, description } = eachVideo
@@ -15,6 +16,7 @@ const WatchLaterCard = ({eachVideo}) => {
     const singleVideoHandler = (_id) => {
         //doing navigate to videoId
         navigate(`/video/${_id}`)
+        addHistoryVideo(eachVideo)
     }
 
     const removeWatchLaterVideoHandler = ()=>{

@@ -4,14 +4,15 @@
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1rem;
   place-items: center;
-  max-width: 100rem;
+ 
   margin: 0 auto;
 
 }
 
-@media screen and (min-width: 776px) {
+@media screen and (min-width: 876px) {
   .video-container{
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
   }
 }
 
@@ -19,10 +20,10 @@
   padding: 0;
   width: 100%;
   height: 28rem;
-  
-  background-color: var(--video-bg);
+  background-color: var(--background-color);
   border-radius: 0;
   position: relative;
+  box-shadow: none;
 
 }
 
@@ -35,8 +36,7 @@
 
 .video-card .card-content {
   padding: .8rem;
- 
-  background-color: var(--video-bg);
+  background-color: var(--background-color);
   color: var(--white-text);
 
 }
