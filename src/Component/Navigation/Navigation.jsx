@@ -3,11 +3,12 @@ import * as FaIcons from "react-icons/fa";
 import * as BiIcons from "react-icons/bi";
 import "./Navigation.css"
 import {useNavigate} from "react-router-dom"
+import {useAuthContext} from "../../Context/Index"
 
 
 const Navigation = () => {
     const navigate = useNavigate()
-    
+    const {isAuth, logoutHandler} = useAuthContext()
 
     return (
         <nav className="nav">
@@ -20,9 +21,11 @@ const Navigation = () => {
                 </div>
 
                 <div className="right-side">
-                    <button className="btn btn-primary btn-nav-login center" onClick={() => navigate('/login')}>
+                    {isAuth ? <button className="btn btn-primary btn-nav-login center" onClick={() =>  logoutHandler()}>
+                        <BiIcons.BiLogIn className="icons home-login-icon" />  Logout
+                    </button> : <button className="btn btn-primary btn-nav-login center" onClick={() => navigate('/login')}>
                         <BiIcons.BiLogIn className="icons home-login-icon" />  Login
-                    </button>
+                    </button>}
                 </div>
             </div>
         </nav>

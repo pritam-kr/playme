@@ -27,17 +27,19 @@ export const SingleVideo = () => {
 
     const { videoId } = useParams();
     //For Liked Video
-    const { saveLikedVideo } = useLikesContext();
-
+    const { saveLikedVideo, state: {likedVideo}, removeLikedVideo } = useLikesContext();
+ 
     // For Watch Later Video
     const { addToWatchLater } = useWatchLaterContext();
 
     //For play list
     const {createPlaylist,  addToPlayList, state: {playlists} } = usePlaylistContext()
     
+  
     //Create playlist 
     const playlistHandler = () =>{
          createPlaylist(playlistName)   
+         setPlaylistName((prev) => ({...prev, playlist: ""}))
     }
 
     // Now match params video ID from existing videos data
@@ -45,6 +47,7 @@ export const SingleVideo = () => {
         (eachVideo) => eachVideo._id === videoId
     );
 
+    
     // liked video
     const likeVideoHandler = () => {
         saveLikedVideo(isVideo);
@@ -59,8 +62,7 @@ export const SingleVideo = () => {
         getFilteredVideo && (
             <div
                 className="single-videos-container main-container"
-                style={{ marginTop: "5rem" }}
-            >
+                style={{ marginTop: "5rem" }}>
                 <div className="single-video-wrapper">
                     <div className="video-player">
                         <VideoIframe videoId={isVideo?._id} />
@@ -78,14 +80,24 @@ export const SingleVideo = () => {
                                 <FaIcons.FaCheckCircle className="icons verified-icon" />
                             </h3>
                             <ul>
-                                <li
+
+                                {likedVideo.find((eachVideo) => eachVideo._id === videoId) ? <li
+                                    className="text-lg btn-likes active-liked-video"
+                                    onClick={() =>
+                                        removeLikedVideo(videoId)
+                                    }
+                                >
+                                    <FaIcons.FaThumbsUp className="icons sidebar-icons" /> Liked
+                                </li>: <li
                                     className="text-lg btn-likes"
                                     onClick={() =>
                                         isAuth ? likeVideoHandler() : navigate("/login")
                                     }
                                 >
                                     <FaIcons.FaThumbsUp className="icons sidebar-icons" /> Like
-                                </li>
+                                </li>}
+
+                                
 
                                 <li
                                     className="text-lg"
@@ -136,12 +148,12 @@ export const SingleVideo = () => {
                              <input
                                  type="text"
                                  className="input"
+                                 value={playlistName.playlist}
                                  placeholder="Enter playlist Name" onChange={(event) => setPlaylistName((prev) => ({...prev, playlist: event.target.value}))}
                              />
                          </div>
 
                          <button className="btn-playlist-create center" onClick={() => playlistHandler()}>
-                             {" "}
                              <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />
                              Create New Playlist
                          </button>

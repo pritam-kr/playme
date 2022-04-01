@@ -1,13 +1,13 @@
 .playlist-card {
-    min-width: 30rem;
+    width: 100%;
     cursor: pointer;
-    min-height: 17rem;
+    min-height: 20rem;
 }
 
 .playlist-card .playlist-image {
-    border-radius: 0;
-    height: 16rem;
-    min-height: 17rem;
+    border-radius: 0; 
+   height: 20rem;
+   width: 100%;
 }
 
 .playlist-info {
@@ -23,4 +23,11 @@
     right: 0;
     color: var(--white-text);
     background-color: var(--dark-background-color);
+}
+@media screen and (min-width: 967px) {
+    .playlist-card {
+        max-width: 35rem;
+        cursor: pointer;
+        min-height: 20rem;
+    }
 }

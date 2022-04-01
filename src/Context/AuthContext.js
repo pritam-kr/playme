@@ -7,6 +7,7 @@ import {
 import axios from "axios";
 import { regEx, loggedMessage } from "../Utils/Index";
 import { useNavigate } from "react-router-dom";
+import {toast} from "react-hot-toast"
 
 
 const AuthContext = createContext();
@@ -29,7 +30,22 @@ export const AuthContextProvider = ({ children }) => {
         setUser(userInfo)
     }, []);
 
+
     const navigate = useNavigate();
+
+
+    //Logout Handler
+    const logoutHandler = () => {
+        if (isAuth) {
+          setIsAuth("")
+          localStorage.removeItem("login-token")
+          localStorage.removeItem("user")
+          toast.success("User Logout!!", { position: "top-right" })
+        } else {
+          navigate("/login")
+        }
+      }
+
     // Login form Handlers
     const loginFormHandler = async (formData) => {
         if (regEx.test(formData.email)) {
@@ -65,7 +81,7 @@ export const AuthContextProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ loginFormHandler, isAuth, user, error, setIsAuth }}>
+        <AuthContext.Provider value={{ loginFormHandler, isAuth, user, error, setIsAuth, logoutHandler }}>
             {children}
         </AuthContext.Provider>
     );

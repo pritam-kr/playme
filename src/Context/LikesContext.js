@@ -76,16 +76,15 @@ export const LikesContextProvider = ({ children }) => {
     }
   };
 
-  const removeLikedVideo = async (video) => {
-    const { _id } = video;
-    
-    if (likedVideo.find((eachVideo) => eachVideo._id === video._id)) {
+  const removeLikedVideo = async (videoId) => {
+   
+    if (likedVideo.find((eachVideo) => eachVideo._id === videoId)) {
       try {
         const {
           status,
           data: { likes },
         } = await axios.delete(
-           `/api/user/likes/${_id}`,
+           `/api/user/likes/${videoId}`,
           {
             headers: {
               authorization: isAuth,

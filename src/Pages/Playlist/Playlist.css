@@ -1,12 +1,15 @@
 .playlist-video-wrapper {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1rem;
+   
 }
 
 .main-container-header .btn-primary {
-  padding: 0.8rem 2rem;
+  padding: 0.8rem 1rem;
   border-radius: 10rem;
+}
+
+.main-container-header .btn-primary .icons{
+  color: var(--white-text);
+  margin-right: .5rem;
 }
 
 @media screen and(min-width: 767px) {
@@ -51,8 +54,14 @@
     padding: .5rem;
     border-bottom: 1px solid var(--border-color);
 }
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 967px) {
   .playlist-video-wrapper {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
+  .main-container-header .btn-primary {
+    padding: 0.8rem 2rem;
+    border-radius: 10rem;
+  }
+  
 }

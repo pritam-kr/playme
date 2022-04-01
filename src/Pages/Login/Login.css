@@ -3,12 +3,18 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+   margin-top: 3rem;
+    z-index: -1;
     position: absolute;
-    top: 0;
+    top: 3rem;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1;
+    overflow-y: scroll;
+}
+
+.login-container .form{
+    margin: 0 1.5rem;
 }
 
 .text-credential{
@@ -18,4 +24,10 @@
 }
 .error{
     padding: 0;
+}
+
+@media screen and (min-width: 967px) {
+    .login-container{
+        margin-top: .5rem;
+    }
 }

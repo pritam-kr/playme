@@ -3,11 +3,12 @@ import * as FaIcons from "react-icons/fa";
 import * as BiIcons from "react-icons/bi";
 import "./Topbar.css";
 import { useNavigate, Link } from "react-router-dom"
-import {useAuthContext} from "../../Context/Index"
+import {useAuthContext, useVideoContext} from "../../Context/Index"
 
 const Topbar = () => {
   const navigate = useNavigate()
   const {isAuth} = useAuthContext()
+  const {setActiveSidebar, activeSidebar} = useVideoContext()
   
   
   return (
@@ -15,7 +16,7 @@ const Topbar = () => {
     <header className="topbar">
       <div className="topbar-wrapper">
         <div className="topbar-left">
-        <FaIcons.FaBars className="icons hamburger-icons" />
+        <FaIcons.FaBars className="icons hamburger-icons" onClick={() => setActiveSidebar(!activeSidebar)} />
           <div className="logo-wrapper"> 
             <Link to="/explore" className="center"><FaIcons.FaPlayCircle className="icons topbar-logo-icon" />
             <h3 className="topbar-logo">PlayMe</h3></Link>
