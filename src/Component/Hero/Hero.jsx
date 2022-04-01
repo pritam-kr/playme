@@ -22,10 +22,11 @@ const Hero = () => {
   return (
     <div className="hero-container">
       <div className="hero-content">
-        <h2>Learn New trends with</h2>
-        <h1 className="site-name center">
+      <h1 className="site-name center">
           <FaIcons.FaPlayCircle /> PlayMe
         </h1>
+        <h2>Learn New trends</h2>
+      
         <p className="text-lg" style={{ marginTop: "1rem" }}>
           PlayMe is a learning platform for students.
         </p>
