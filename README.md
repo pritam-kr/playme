@@ -23,7 +23,7 @@
 - Playlist management feature
 - History management <br><br>
 
-### Pages For video library <br><br>
+### Pages For video library 
 
 ####  Home<br><br>
 
