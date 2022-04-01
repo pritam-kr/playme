@@ -5,7 +5,7 @@ import {useVideoContext} from "../../Context/Index"
 
 export const Explore = () => {
 
-    const {getUniqueCategory, dispatch, getFilteredVideo} = useVideoContext()
+    const {getUniqueCategory, dispatch, getFilteredVideo, state:{categoryName}} = useVideoContext()
    
     return (
         <div className="explore-container main-container">
@@ -13,8 +13,9 @@ export const Explore = () => {
                 
                 <div className="categories-wrapper">
                     <ul>
-                      <li className={getUniqueCategory?.length === 5 ? "category-list active" : "category-list"} onClick={() => dispatch({type: "FILTER_RESET"})}>All</li> 
-                        {getUniqueCategory?.map((eachCategory, i) => <li className="category-list" onClick={() => dispatch({type: "GET_CATEGORY_NAME", payload: eachCategory})} key={i}>{eachCategory}</li>)}
+                      <button className={categoryName === "ALL" ? "category-list active" : "category-list"} onClick={() => dispatch({type: "FILTER_RESET"})}>All</button> 
+
+                        {getUniqueCategory?.map((eachCategory, i) => <button className={eachCategory === categoryName ? "category-list active" : "category-list" } onClick={() => dispatch({type: "GET_CATEGORY_NAME", payload: eachCategory})} key={i}>{eachCategory}</button>)}
                     </ul> 
                 </div>
 

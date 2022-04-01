@@ -2,7 +2,7 @@ import React from "react"
 import * as FaIcons from "react-icons/fa";
 import * as BiIcons from "react-icons/bi";
 import "./Navigation.css"
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 import {useAuthContext} from "../../Context/Index"
 
 
@@ -14,10 +14,10 @@ const Navigation = () => {
         <nav className="nav">
             <div className="nav-wrapper space-between">
                 <div className="left-side">
-                    <div className="logo center">
+                    <Link to="/" className="logo center">
                         <FaIcons.FaPlayCircle />
                         <h3>PlayMe</h3>
-                    </div>
+                    </Link>
                 </div>
 
                 <div className="right-side">

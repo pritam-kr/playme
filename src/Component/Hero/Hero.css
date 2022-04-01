@@ -62,3 +62,22 @@ color: var(--white-text);
   font-size: 1.5rem;
   margin-right: .5rem;
 }
+
+
+
+/*=========Category chips in Home Page============*/
+.videos-category{
+  margin: 1rem 0;
+}
+.category-chips{
+  
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(5px) saturate(180%);
+  background-color: #2ea4da49;
+  color: var(--white-text);
+  margin: .3rem 1rem;
+  padding: .7rem 1.5rem;
+  border-radius: 5rem;
+  cursor: pointer;
+  border: none;
+}
