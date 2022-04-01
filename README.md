@@ -1,3 +1,54 @@
-## Video Library Backend
+## [PlayMe - Video Library](https://playme-by-pritam.netlify.app/)
 
-This folder contains the Mock Backend created for Video Library App. It contains different API end-points and database configuration for building Video Library; so that you can focus on building Frontend.
+ PlayMe is Video library app for programming tutorial. <br><br>
+
+
+### Tech Stack
+- Reactjs
+- Context API
+- Reducer
+
+### Demo 
+
+![demo](./src/assets/demo.gif)<br><br>
+
+
+### Features 
+
+- Login Authentication
+- Video like and disliked
+- Categories
+- Single video page
+- Watch later
+- Playlist management feature
+- History management <br><br>
+
+### Pages For video library <br><br>
+
+####  Home<br><br>
+
+![home](./src/assets/Home.png)
+
+####  Explore<br><br>
+
+![explore](./src/assets/explore.png)
+
+####  Liked Video Page<br><br>
+
+![liked](./src/assets/likedVideo.png)
+
+####  Playlist Page<br><br>
+
+![playlist](./src/assets/playlist.png)
+
+####  Playlist Video Page <br><br>
+
+![playlist video](./src/assets/playlistVideo.png)
+
+####  Watch Later Page <br><br>
+
+![watchlater](./src/assets/watchLater.png)
+
+#### History Page <br><br>
+
+![history](./src/assets/history.png)
