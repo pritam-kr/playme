@@ -16,23 +16,25 @@ export const VideoCard = ({ eachVideo }) => {
   const navigate = useNavigate();
   const [tool, setTool] = useState(false);
 
-  const [createPlaylistModal, setCreatePlaylistModal] = useState(false );
-  const {createPlaylist,  addToPlayList, state: {playlists} } = usePlaylistContext()
+  const [createPlaylistModal, setCreatePlaylistModal] = useState(false);
+  const {
+    createPlaylist,
+    addToPlayList,
+    state: { playlists },
+  } = usePlaylistContext();
   const [playlistName, setPlaylistName] = useState({ playlist: "" });
 
- //Playlist Handler
- const playlistHandlers = () => {
-   
-  createPlaylist(playlistName)
-};
+  //Playlist Handler
+  const playlistHandlers = () => {
+    createPlaylist(playlistName);
+  };
 
-//Modal Handler
+  //Modal Handler
 
-const modalHandler = () => {
-  setCreatePlaylistModal(true)
-  setTool(false)
-}
-
+  const modalHandler = () => {
+    setCreatePlaylistModal(true);
+    setTool(false);
+  };
 
   //For Liked Video
   const { saveLikedVideo } = useLikesContext();
@@ -45,7 +47,7 @@ const modalHandler = () => {
 
   //Doing Destructure
   const { _id, thumbnail, creatorImg, title, description, creator } = eachVideo;
-  
+
   const singleVideoHandler = () => {
     //doing navigate to videoId
     navigate(`/video/${_id}`);
@@ -65,7 +67,6 @@ const modalHandler = () => {
     setTool(false);
   };
 
- 
   return (
     <>
       <div className="card-box video-card">
@@ -130,14 +131,13 @@ const modalHandler = () => {
               />
             </h3>
             <div className="lists-playlist">
-              {playlists?.map((data) => {
+              {playlists?.map((data, i) => {
                 return (
-                  <button
+                  data.videos.find((video) => video._id === eachVideo._id) ? <button className="playlist-one"> <FaIcons.FaCheckCircle className="icons tools-icon icon-circle-plus" /> {data.title}</button> : <button
                     className="playlist-one"
                     key={data._id}
-                    onClick={() => addToPlayList(data, eachVideo)}
-                  >
-                    <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />{" "}
+                    onClick={() => addToPlayList(data, eachVideo)}>
+                    <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />
                     {data.title}
                   </button>
                 );
@@ -161,7 +161,8 @@ const modalHandler = () => {
 
               <button
                 className="btn-playlist-create center"
-                onClick={() => playlistHandlers ()}>
+                onClick={() => playlistHandlers()}
+              >
                 <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />
                 Create New Playlist
               </button>

@@ -26,7 +26,7 @@ export const Explore = () => {
                              return eachVideo
                          }else if(eachVideo.title.toLowerCase().includes(searchValue.toLowerCase())){
                              return eachVideo
-                         }
+                         } 
                      }).map((eachVideo) => <VideoCard  eachVideo={eachVideo} key={eachVideo.id}/> ) }
                 </div>
             </div>
