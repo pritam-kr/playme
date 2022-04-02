@@ -1,4 +1,4 @@
-import { GET_VIDEO, GET_CATEGORY_NAME, FILTER_RESET } from "./Action";
+import { VIDEOS_CATEGORY_NAME,GET_VIDEO, GET_CATEGORY_NAME, FILTER_RESET } from "./Action";
 
 export const videoReducer = (state, action) => {
   switch (action.type) {
@@ -6,24 +6,13 @@ export const videoReducer = (state, action) => {
       return { ...state, videos: action.payload };
 
     case GET_CATEGORY_NAME:
-      if (state.categoryName.includes(action.payload)) {
-        return {
-          ...state,
-          categoryName: [...state.categoryName].filter(
-            (eachCategory) => eachCategory !== action.payload
-          ),
-        };
-      }
-
-      return {
-        ...state,
-        categoryName: [...state.categoryName, action.payload],
-      };
+      return { ...state, categoryName: action.payload };
 
     case FILTER_RESET:
+      return { ...state, categoryName: "ALL" };
 
-    return {...state, categoryName: []}
-    
+    case VIDEOS_CATEGORY_NAME :
+    return {...state, categoryName: action.payload}
 
     default:
       return state;

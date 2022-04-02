@@ -1,11 +1,10 @@
 export const filterByCategory = (data, category) => {
+    
+  let copied = [...data];
 
-    let copied = [...data]
-
-     if(category.length !== 0){
-        return copied.filter((eachVideo) => category.includes(eachVideo.categoryName))
-     }
-
-     return copied
-
-}
+  if (category === "ALL") {
+    return copied;
+  } else {
+    return copied.filter((eachVideo) => eachVideo.categoryName === category);
+  }
+};
