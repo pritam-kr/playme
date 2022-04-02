@@ -21,7 +21,8 @@
 - Single video page
 - Watch later
 - Playlist management feature
-- History management <br><br>
+- History management 
+- Search video filter <br><br>
 
 ### Pages For video library 
 

@@ -8,9 +8,12 @@ import axios from "axios";
 import { regEx, loggedMessage } from "../Utils/Index";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-hot-toast"
+import Cookies, {Cookie} from "universal-cookie"
 
 
 const AuthContext = createContext();
+const cookie = new Cookies()
+ 
 
 export const AuthContextProvider = ({ children }) => {
     // getting token and userInfo from local Storage
@@ -38,6 +41,7 @@ export const AuthContextProvider = ({ children }) => {
     const logoutHandler = () => {
         if (isAuth) {
           setIsAuth("")
+          
           localStorage.removeItem("login-token")
           localStorage.removeItem("user")
           toast.success("User Logout!!", { position: "top-right" })
