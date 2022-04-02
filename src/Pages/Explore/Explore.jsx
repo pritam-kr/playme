@@ -5,7 +5,7 @@ import {useVideoContext} from "../../Context/Index"
 
 export const Explore = () => {
 
-    const {getUniqueCategory, dispatch, getFilteredVideo, state:{categoryName}} = useVideoContext()
+    const {getUniqueCategory, dispatch, getFilteredVideo, state:{categoryName}, searchValue} = useVideoContext()
    
     return (
         <div className="explore-container main-container">
@@ -21,7 +21,13 @@ export const Explore = () => {
 
                 {/* Video listing cards will show here */}
                 <div className="video-container">
-                     {getFilteredVideo.length === 0 ? <Gif />: getFilteredVideo?.map((eachVideo) => <VideoCard  eachVideo={eachVideo} key={eachVideo.id}/> ) }
+                     {getFilteredVideo?.length === 0 ? <Gif />: getFilteredVideo?.filter((eachVideo) => {
+                         if(searchValue === ""){
+                             return eachVideo
+                         }else if(eachVideo.title.toLowerCase().includes(searchValue.toLowerCase())){
+                             return eachVideo
+                         }
+                     }).map((eachVideo) => <VideoCard  eachVideo={eachVideo} key={eachVideo.id}/> ) }
                 </div>
             </div>
         </div>

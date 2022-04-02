@@ -4,7 +4,6 @@
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1rem;
   place-items: center;
- 
   margin: 0 auto;
 
 }
