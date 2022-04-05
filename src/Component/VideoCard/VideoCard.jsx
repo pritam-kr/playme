@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { descriptionShort, titleShort } from "../../Utils/Index";
+import { descriptionShort, titleShort, timeAgoFormatter } from "../../Utils/Index";
 import * as FaIcons from "react-icons/fa";
 import "./VideoCard.css";
 import { useNavigate } from "react-router-dom";
@@ -46,12 +46,14 @@ export const VideoCard = ({ eachVideo }) => {
   const { addToWatchLater } = useWatchLaterContext();
 
   //Doing Destructure
-  const { _id, thumbnail, creatorImg, title, description, creator } = eachVideo;
+  const { _id, thumbnail, creatorImg, title, description, creator, view, timeStamp } = eachVideo;
 
   const singleVideoHandler = () => {
     //doing navigate to videoId
     navigate(`/video/${_id}`);
-    addHistoryVideo(eachVideo);
+    if(isAuth){
+      addHistoryVideo(eachVideo);
+    }
   };
 
   //like handler
@@ -97,9 +99,11 @@ export const VideoCard = ({ eachVideo }) => {
               <button className="center" onClick={() => watchLaterHandler()}>
                 <FaIcons.FaClock className="icons tools-icon watchLater-icon" />
               </button>
-              <button className="center" onClick={() => modalHandler()}>
-                <FaIcons.FaFolderPlus className="icons tools-icon watchLater-icon" />
-              </button>
+              {isAuth && (
+                <button className="center" onClick={() => modalHandler()}>
+                  <FaIcons.FaFolderPlus className="icons tools-icon watchLater-icon" />
+                </button>
+              )}
             </div>
 
             <button className="btn-popup" onClick={() => setTool(!tool)}>
@@ -108,6 +112,9 @@ export const VideoCard = ({ eachVideo }) => {
           </div>
           <p className="creator-title text-xm">
             {creator} <FaIcons.FaCheckCircle className="icons" />
+          </p>
+          <p className="creator-title view-title text-xm">
+            {view} views <FaIcons.FaCircle  className="icons"/> <span>{timeAgoFormatter(timeStamp) }</span>
           </p>
           <p className="card-text video-description">
             {descriptionShort(description)}
@@ -124,7 +131,7 @@ export const VideoCard = ({ eachVideo }) => {
           <div className="create-playlist-wrapper">
             {/*---Add  to new play list and show exiting playlist */}
             <h3 className="btn-modal-close space-between">
-              PlayList{" "}
+              PlayList 
               <FaIcons.FaTimesCircle
                 onClick={() => setCreatePlaylistModal(false)}
                 className="icons"
@@ -132,11 +139,20 @@ export const VideoCard = ({ eachVideo }) => {
             </h3>
             <div className="lists-playlist">
               {playlists?.map((data, i) => {
-                return (
-                  data.videos.find((video) => video._id === eachVideo._id) ? <button className="playlist-one"> <FaIcons.FaCheckCircle className="icons tools-icon icon-circle-plus" /> {data.title}</button> : <button
+                return data.videos.find(
+                  (video) => video._id === eachVideo._id
+                ) ? (
+                  <button className="playlist-one">
+                    {" "}
+                    <FaIcons.FaCheckCircle className="icons tools-icon icon-circle-plus" />{" "}
+                    {data.title}
+                  </button>
+                ) : (
+                  <button
                     className="playlist-one"
                     key={data._id}
-                    onClick={() => addToPlayList(data, eachVideo)}>
+                    onClick={() => addToPlayList(data, eachVideo)}
+                  >
                     <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />
                     {data.title}
                   </button>
@@ -168,7 +184,7 @@ export const VideoCard = ({ eachVideo }) => {
               </button>
             </div>
           </div>
-        </div>
+        </div>  
         {/*  Playlist modal end */}
       </div>
     </>

@@ -83,12 +83,14 @@ label, button, ::placeholder {
     margin-left: 0rem;
     padding: 1.5rem;
     margin-top: 5rem;
+    min-height: 100vh;
 }
 
 .main-container-header {
     color: var(--white-text);
     max-width: 100rem;
     margin: 0 auto;
+    
 }
 
 .playlist-wrapper{

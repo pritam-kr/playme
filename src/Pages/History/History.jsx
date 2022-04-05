@@ -1,7 +1,7 @@
 import React from "react";
 import * as FaIcons from "react-icons/fa";
 import "./History.css"
-import {HistoryCard} from "../../Component/index"
+import {HistoryCard, Footer} from "../../Component/index"
 import {useHistoryContext} from "../../Context/Index"
 
 const History = () => {
@@ -9,6 +9,7 @@ const History = () => {
   const {state: {watchedVideo}, clearHistory} = useHistoryContext()
   
   return (
+    <>
     <div className="main-container history-container">
       <header className="main-container-header space-between">
         <h2 className="text-md">History ({watchedVideo?.length})</h2> 
@@ -21,6 +22,8 @@ const History = () => {
         {watchedVideo?.map((eachVideo) => <HistoryCard key={eachVideo._id} eachVideo={eachVideo}/>)}
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 

@@ -1,12 +1,13 @@
 import React from 'react'
 import "./WatchLater.css"
 import {useWatchLaterContext} from "../../Context/WatchLaterContext"
-import {WatchLaterCard, FixedLoader} from "../../Component/index"
+import {WatchLaterCard, FixedLoader, Footer} from "../../Component/index"
 
 const  WatchLater = () => {
   
   const {state: {watchLater}} = useWatchLaterContext()
   return (
+    <>
     <div className="main-container watchlater-container">
       <header className="main-container-header">
         <h1 className="text-md">Watch Later Video ({watchLater?.length})</h1>
@@ -17,6 +18,8 @@ const  WatchLater = () => {
         ))}
       </div>
     </div>
+    <Footer />
+    </>
   )
 }
 

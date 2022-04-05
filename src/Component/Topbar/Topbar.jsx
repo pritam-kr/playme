@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import "./Topbar.css";
 import { useNavigate, Link, useLocation } from "react-router-dom";

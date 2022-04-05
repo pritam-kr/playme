@@ -1,6 +1,6 @@
 import React from "react";
 import "./Explore.css";
-import {VideoCard,Gif} from "../../Component/index"
+import {VideoCard,Gif, Footer} from "../../Component/index"
 import {useVideoContext} from "../../Context/Index"
 
 export const Explore = () => {
@@ -8,6 +8,7 @@ export const Explore = () => {
     const {getUniqueCategory, dispatch, getFilteredVideo, state:{categoryName}, searchValue} = useVideoContext()
    
     return (
+        <>
         <div className="explore-container main-container">
             <div className="video-list-container"> 
                 
@@ -30,6 +31,9 @@ export const Explore = () => {
                      }).map((eachVideo) => <VideoCard  eachVideo={eachVideo} key={eachVideo.id}/> ) }
                 </div>
             </div>
+            
         </div>
+        <Footer />
+        </>
     );
 };

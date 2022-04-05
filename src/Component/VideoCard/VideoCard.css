@@ -66,6 +66,17 @@
   margin-left: .5rem;
 }
 
+.view-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.view-title .icons{
+  margin:  0 .3rem;
+  font-size: .5rem;
+}
+
 .card-content .creator-avatar {
   width: 3.2rem;
   height: 3.2rem;
