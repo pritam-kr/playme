@@ -84,8 +84,28 @@ export const AuthContextProvider = ({ children }) => {
         }
     };
 
+    //Signup Form handler
+    const signupFormHandler = async (formData) => {
+        const signupUser = formData
+        try{
+
+            const { data : {encodedToken} } = await axios.post("/api/auth/signup", signupUser);
+            if (encodedToken) {
+                toast.success("Your account is created.", {position: "top-right"})
+                navigate("/login");
+                localStorage.setItem('Signup-Token', encodedToken)
+            }
+        }
+        catch (error) {
+            const {data : {errors}} = error.response
+            toast.error(...errors, {position: "top-right"})
+        }
+     
+
+    }
+
     return (
-        <AuthContext.Provider value={{ loginFormHandler, isAuth, user, error, setIsAuth, logoutHandler }}>
+        <AuthContext.Provider value={{ loginFormHandler, isAuth, user, error, setIsAuth, logoutHandler, signupFormHandler }}>
             {children}
         </AuthContext.Provider>
     );
