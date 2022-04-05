@@ -1,0 +1,52 @@
+.signup-container {
+  margin: 10rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.signup-container .error {
+  height: 2em;
+  margin: 0.5rem 0;
+}
+
+.signup-container .form {
+  width: auto;
+  margin: 0 1rem;
+}
+
+.signup-container .form .input {
+  padding: 0.9rem 1rem;
+}
+
+.signup-container label {
+  font-size: 1.3rem;
+}
+
+.signup-container::placeholder {
+  font-size: 1.2rem;
+  padding: 0;
+}
+
+.confirm-Password-input {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 0;
+
+  right: 1rem;
+  top: 1.5rem;
+}
+
+.inputs-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.checkbox-row label{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

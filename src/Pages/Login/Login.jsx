@@ -70,11 +70,11 @@ export const Login = () => {
 
                 <div className="form-footer">
                     <p className="paragraph">
-                        {" "}
+              
                         <Link to="/signup" className="links">
-                            {" "}
-                            Create an Account.{" "}
-                        </Link>{" "}
+                 
+                            Create an Account. 
+                        </Link> 
                     </p>
                 </div>
             </form>

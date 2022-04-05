@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Playlist.css";
 import { usePlaylistContext } from "../../Context/PlaylistContext";
-import { PlayListCard } from "../../Component/index";
+import { PlayListCard, Footer } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
 
 export const Playlist = () => {
@@ -63,6 +63,8 @@ export const Playlist = () => {
         </div>
       </div>
       {/*==Modal for create playlist==*/}
+
+      <Footer />
     </>
   );
 };

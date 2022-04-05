@@ -1,6 +1,6 @@
 import React from "react";
 import "./Likes.css";
-import { Card, FixedLoader } from "../../Component/index";
+import { Card, FixedLoader, Footer } from "../../Component/index";
 import { useLikesContext } from "../../Context/Index";
 
 
@@ -10,6 +10,7 @@ const Likes = () => {
   } = useLikesContext();
 
   return (
+    <>
     <div className="main-container likes-container">
       <header className="main-container-header">
         <h1 className="text-md">Liked Video ({likedVideo.length})</h1>
@@ -20,6 +21,8 @@ const Likes = () => {
         ))}
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 

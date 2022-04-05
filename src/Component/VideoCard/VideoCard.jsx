@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { descriptionShort, titleShort } from "../../Utils/Index";
+import { descriptionShort, titleShort, timeAgoFormatter } from "../../Utils/Index";
 import * as FaIcons from "react-icons/fa";
 import "./VideoCard.css";
 import { useNavigate } from "react-router-dom";
@@ -16,23 +16,25 @@ export const VideoCard = ({ eachVideo }) => {
   const navigate = useNavigate();
   const [tool, setTool] = useState(false);
 
-  const [createPlaylistModal, setCreatePlaylistModal] = useState(false );
-  const {createPlaylist,  addToPlayList, state: {playlists} } = usePlaylistContext()
+  const [createPlaylistModal, setCreatePlaylistModal] = useState(false);
+  const {
+    createPlaylist,
+    addToPlayList,
+    state: { playlists },
+  } = usePlaylistContext();
   const [playlistName, setPlaylistName] = useState({ playlist: "" });
 
- //Playlist Handler
- const playlistHandlers = () => {
-   
-  createPlaylist(playlistName)
-};
+  //Playlist Handler
+  const playlistHandlers = () => {
+    createPlaylist(playlistName);
+  };
 
-//Modal Handler
+  //Modal Handler
 
-const modalHandler = () => {
-  setCreatePlaylistModal(true)
-  setTool(false)
-}
-
+  const modalHandler = () => {
+    setCreatePlaylistModal(true);
+    setTool(false);
+  };
 
   //For Liked Video
   const { saveLikedVideo } = useLikesContext();
@@ -44,12 +46,14 @@ const modalHandler = () => {
   const { addToWatchLater } = useWatchLaterContext();
 
   //Doing Destructure
-  const { _id, thumbnail, creatorImg, title, description, creator } = eachVideo;
-  
+  const { _id, thumbnail, creatorImg, title, description, creator, view, timeStamp } = eachVideo;
+
   const singleVideoHandler = () => {
     //doing navigate to videoId
     navigate(`/video/${_id}`);
-    addHistoryVideo(eachVideo);
+    if(isAuth){
+      addHistoryVideo(eachVideo);
+    }
   };
 
   //like handler
@@ -65,7 +69,6 @@ const modalHandler = () => {
     setTool(false);
   };
 
- 
   return (
     <>
       <div className="card-box video-card">
@@ -96,9 +99,11 @@ const modalHandler = () => {
               <button className="center" onClick={() => watchLaterHandler()}>
                 <FaIcons.FaClock className="icons tools-icon watchLater-icon" />
               </button>
-              <button className="center" onClick={() => modalHandler()}>
-                <FaIcons.FaFolderPlus className="icons tools-icon watchLater-icon" />
-              </button>
+              {isAuth && (
+                <button className="center" onClick={() => modalHandler()}>
+                  <FaIcons.FaFolderPlus className="icons tools-icon watchLater-icon" />
+                </button>
+              )}
             </div>
 
             <button className="btn-popup" onClick={() => setTool(!tool)}>
@@ -107,6 +112,9 @@ const modalHandler = () => {
           </div>
           <p className="creator-title text-xm">
             {creator} <FaIcons.FaCheckCircle className="icons" />
+          </p>
+          <p className="creator-title view-title text-xm">
+            {view} views <FaIcons.FaCircle  className="icons"/> <span>{timeAgoFormatter(timeStamp) }</span>
           </p>
           <p className="card-text video-description">
             {descriptionShort(description)}
@@ -123,21 +131,29 @@ const modalHandler = () => {
           <div className="create-playlist-wrapper">
             {/*---Add  to new play list and show exiting playlist */}
             <h3 className="btn-modal-close space-between">
-              PlayList{" "}
+              PlayList 
               <FaIcons.FaTimesCircle
                 onClick={() => setCreatePlaylistModal(false)}
                 className="icons"
               />
             </h3>
             <div className="lists-playlist">
-              {playlists?.map((data) => {
-                return (
+              {playlists?.map((data, i) => {
+                return data.videos.find(
+                  (video) => video._id === eachVideo._id
+                ) ? (
+                  <button className="playlist-one">
+                    {" "}
+                    <FaIcons.FaCheckCircle className="icons tools-icon icon-circle-plus" />{" "}
+                    {data.title}
+                  </button>
+                ) : (
                   <button
                     className="playlist-one"
                     key={data._id}
                     onClick={() => addToPlayList(data, eachVideo)}
                   >
-                    <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />{" "}
+                    <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />
                     {data.title}
                   </button>
                 );
@@ -161,13 +177,14 @@ const modalHandler = () => {
 
               <button
                 className="btn-playlist-create center"
-                onClick={() => playlistHandlers ()}>
+                onClick={() => playlistHandlers()}
+              >
                 <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />
                 Create New Playlist
               </button>
             </div>
           </div>
-        </div>
+        </div>  
         {/*  Playlist modal end */}
       </div>
     </>

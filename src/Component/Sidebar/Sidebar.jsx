@@ -17,16 +17,23 @@ const Sidebar = () => {
   return (
     <>
       <div className={activeSidebar ? "sidebar-wrapper" : "sidebar-wrapper active-sidebar"}>
+
         <ul className="sidebar-links-wrapper">
           <NavLink to="/" className="sidebar-links sidebar-home text-lg">
             <FaIcons.FaHome className="icons sidebar-icons" /> Home
           </NavLink>
+
+          <NavLink to="/latest" style={getActiveStyle} className="sidebar-links sidebar-home text-lg">
+             <FaIcons.FaSort className="icons sidebar-icons" /> Latest Video
+          </NavLink>
+
           <NavLink to="/explore" style={getActiveStyle}
             className="sidebar-links sidebar-explore text-lg"
             onClick={() => navigate("/explore")}
           >
             <FaIcons.FaCompass className="icons sidebar-icons" /> Explore
           </NavLink>
+
           <NavLink to="/playlist" style={getActiveStyle} className="sidebar-links sidebar-playlist text-lg" onClick={() => {
             !isAuth ? navigate("/login") : navigate("/playlist");
           }}>

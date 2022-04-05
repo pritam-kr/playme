@@ -26,6 +26,8 @@ export const SingleVideo = () => {
     } = useVideoContext();
 
     const { videoId } = useParams();
+
+     
     //For Liked Video
     const { saveLikedVideo, state: {likedVideo}, removeLikedVideo } = useLikesContext();
  
@@ -47,7 +49,7 @@ export const SingleVideo = () => {
         (eachVideo) => eachVideo._id === videoId
     );
 
-    
+     
     // liked video
     const likeVideoHandler = () => {
         saveLikedVideo(isVideo);
@@ -135,11 +137,11 @@ export const SingleVideo = () => {
                      {/*---Add  to new play list and show exiting playlist */}
                        <h3  className="btn-modal-close space-between">PlayList <FaIcons.FaTimesCircle onClick={() => setModal(false)} className="icons"/></h3>             
                      <div className="lists-playlist">
-                          {playlists?.map((data) => {
-                              return (<button className="playlist-one" key={data._id} onClick={() => addToPlayList(data, isVideo)}>
-                              <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />{" "}
+                          {playlists?.map((data, i) => {
+                              return (data.videos.find((eachVideo) => eachVideo._id === isVideo._id) ? <button className="playlist-one" key={i}><FaIcons.FaCheckCircle className="icons tools-icon icon-circle-plus" /> {data.title}  </button>: <button className="playlist-one" key={data._id} onClick={() => addToPlayList(data, isVideo)}>
+                              <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />
                               {data.title}
-                          </button>)
+                          </button> )
                           })}
                      </div>
 

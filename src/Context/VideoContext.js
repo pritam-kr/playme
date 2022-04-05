@@ -9,11 +9,14 @@ const VideoContext = createContext();
 const initialState = {
   videos: [],
   categoryName: "ALL",
+   
 };
 
 export const VideoContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(videoReducer, initialState);
-  const { videos, categoryName } = state;
+const [state, dispatch] = useReducer(videoReducer, initialState);
+const { videos, categoryName } = state;
+const [searchValue, setSearchValue] = useState("")
+ 
 
   //Use State for Sidebar
   const [activeSidebar, setActiveSidebar] = useState(true);
@@ -24,6 +27,10 @@ export const VideoContextProvider = ({ children }) => {
   //filter by Category
   const getFilteredVideo = filterByCategory(videos, categoryName);
 
+  //Sort By Latest 
+  const getSortByLatest = getFilteredVideo.sort((a, b) => new Date(b.timeStamp) - new Date (a.timeStamp)) 
+
+   
   // Fetching Data from Backend
   useEffect(() => {
     (async () => {
@@ -47,6 +54,7 @@ export const VideoContextProvider = ({ children }) => {
         getFilteredVideo,
         setActiveSidebar,
         activeSidebar,
+        setSearchValue, searchValue, getSortByLatest
       }}
     >
       {children}

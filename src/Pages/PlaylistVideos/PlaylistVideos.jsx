@@ -2,7 +2,7 @@ import React from "react";
 import "./PlaylistVideos.css";
 import { useParams } from "react-router-dom";
 import { usePlaylistContext } from "../../Context/Index";
-import {PlayListVideoCard} from "../../Component/index"
+import {PlayListVideoCard, Footer} from "../../Component/index"
 import {FixedLoader} from "../../Component/FixedLoader/FixedLoader"
 
 const PlaylistVideos = () => {
@@ -19,6 +19,7 @@ const PlaylistVideos = () => {
 
   
   return (
+    <>
     <div className="main-container">
       <header className="main-container-header">
         <h1 className="text-md">
@@ -29,6 +30,8 @@ const PlaylistVideos = () => {
         </div>
       </header>
     </div>
+    <Footer />
+    </>
   );
 };
 

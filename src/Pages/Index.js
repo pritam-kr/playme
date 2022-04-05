@@ -8,4 +8,6 @@ export {Likes} from "./Likes/Likes"
 export {WatchLater} from "./WatchLater/WatchLater"
 export {History}  from "./History/History"
 export {PlaylistVideos} from "./PlaylistVideos/PlaylistVideos"
+export {Signup} from "./Signup/Signup"
+export {SortByLatest} from "./SortByLatest/SortByLatest"
  

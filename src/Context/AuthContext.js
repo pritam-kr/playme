@@ -8,9 +8,12 @@ import axios from "axios";
 import { regEx, loggedMessage } from "../Utils/Index";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-hot-toast"
+import Cookies, {Cookie} from "universal-cookie"
 
 
 const AuthContext = createContext();
+const cookie = new Cookies()
+ 
 
 export const AuthContextProvider = ({ children }) => {
     // getting token and userInfo from local Storage
@@ -38,6 +41,7 @@ export const AuthContextProvider = ({ children }) => {
     const logoutHandler = () => {
         if (isAuth) {
           setIsAuth("")
+          
           localStorage.removeItem("login-token")
           localStorage.removeItem("user")
           toast.success("User Logout!!", { position: "top-right" })
@@ -80,8 +84,28 @@ export const AuthContextProvider = ({ children }) => {
         }
     };
 
+    //Signup Form handler
+    const signupFormHandler = async (formData) => {
+        const signupUser = formData
+        try{
+
+            const { data : {encodedToken} } = await axios.post("/api/auth/signup", signupUser);
+            if (encodedToken) {
+                toast.success("Your account is created.", {position: "top-right"})
+                navigate("/login");
+                localStorage.setItem('Signup-Token', encodedToken)
+            }
+        }
+        catch (error) {
+            const {data : {errors}} = error.response
+            toast.error(...errors, {position: "top-right"})
+        }
+     
+
+    }
+
     return (
-        <AuthContext.Provider value={{ loginFormHandler, isAuth, user, error, setIsAuth, logoutHandler }}>
+        <AuthContext.Provider value={{ loginFormHandler, isAuth, user, error, setIsAuth, logoutHandler, signupFormHandler }}>
             {children}
         </AuthContext.Provider>
     );
