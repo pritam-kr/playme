@@ -1,0 +1,26 @@
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.8em;
+    background-color: var(--dark-background-color);
+    color: var(--white-text);
+    margin-left: 20rem;
+}
+footer .paragraph{
+    font-size: medium;
+    font-weight: bold;
+    color: var(--white-text);
+    font-size: 1rem;
+}
+footer .icons{
+    color: var(--white-text);
+}
+footer ul li{
+    display: inline-block;
+    margin-right: 15px;
+}
+footer .links{
+    font-size: 1.6rem;
+}
