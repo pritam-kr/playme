@@ -1,8 +1,7 @@
-import moment from "moment";
-import { v4 as uuidv4 } from "uuid";
 
 import { kFormatter, thumbnail } from "../../Utils/Index";
-const fromNow = moment([2022, 1, 22]);
+
+//MM-DD-YYYY
 
 export const videos = [
   {
@@ -11,7 +10,7 @@ export const videos = [
     title: "launching neog.camp",
     description: "launching neog.camp: roadmap to full stack dev",
     creator: "Tanay Pratap",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "11/22/2020",
     view: kFormatter(500000),
     thumbnail: thumbnail("Ezk2AwqgS9Q"),
     creatorImg:
@@ -25,7 +24,7 @@ export const videos = [
     description:
       "Learn Web 3.0 from zero. In this video, Madhavan (Founder, questbook), teaches Tanay how to write his first smart contract. ",
     creator: "Tanay Pratap",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "2/22/2022",
     view: kFormatter(5000),
     thumbnail: thumbnail("B-s1kqy62FM"),
     creatorImg:
@@ -39,7 +38,7 @@ export const videos = [
     description:
       "Learn how to use Node and Express in this comprehensive course. First, you will learn the fundamentals of Node and Express. ",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "11/22/2019",
     view: kFormatter(5000),
     thumbnail: thumbnail("Oe421EPjeBE"),
     creatorImg:
@@ -53,7 +52,7 @@ export const videos = [
     description:
       "ExpressJS is the most popular Node.js web server framework and is the basis of thousands of sites. In this video I ",
     creator: "Web Dev Simplified",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "11/25/2010",
     view: kFormatter(80000),
     thumbnail: thumbnail("SccSCuHhOw0"),
     creatorImg:
@@ -67,7 +66,7 @@ export const videos = [
     description:
       "MongoDB is a complex NoSQL database with a ton of commands and intricacies.",
     creator: "Web Dev Simplified",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "10/22/2011",
     view: kFormatter(80000),
     thumbnail: thumbnail("ofme2o29ngU"),
     creatorImg:
@@ -81,7 +80,7 @@ export const videos = [
     description:
       "Welcome to neogcamp's levelZero journey. You don't know anything about web? ",
     creator: "Tanay Pratap",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "11/22/2021",
     view: kFormatter(905000),
     thumbnail: thumbnail("No8qdcVYiQw"),
     creatorImg:
@@ -95,7 +94,7 @@ export const videos = [
     description:
       "This complete 134-part JavaScript tutorial for beginners will teach you everything you need to know to get started with javaScript",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "1/3/2022",
     view: kFormatter(905000),
     thumbnail: thumbnail("PkZNo7MFNFg"),
     creatorImg:
@@ -108,7 +107,7 @@ export const videos = [
     title: " Learn HTML Full Tutorial",
     description: "Learn HTML in this complete course for beginners. ",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "10/22/2017",
     view: kFormatter(904000),
     thumbnail: thumbnail("kUMe1FH4CHE"),
     creatorImg:
@@ -121,7 +120,7 @@ export const videos = [
     title: "CSS Tutorial - Zero to Hero (Complete Course)",
     description: "Learn CSS in this complete course for beginners. ",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "1/1/2022",
     view: kFormatter(904000),
     thumbnail: thumbnail("1Rs2ND1ryYc"),
     creatorImg:
@@ -135,7 +134,7 @@ export const videos = [
     description:
       "This video is a full backend web development course with python.",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "1/2/2022",
     view: kFormatter(94000),
     thumbnail: thumbnail("jBzwzrDvZ18"),
     creatorImg:
@@ -149,7 +148,7 @@ export const videos = [
     description:
       "MERN Stack Course - ALSO: Convert Backend to Serverless with MongoDB Realm",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "11/24/2016",
     view: kFormatter(96000),
     thumbnail: thumbnail("mrHNSanmqQ4"),
     creatorImg:
@@ -163,7 +162,7 @@ export const videos = [
     description:
       "Learn to develop games using the Unity game engine in this complete course for beginners.",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "1/22/2014",
     view: kFormatter(96000),
     thumbnail: thumbnail("gB1F9G0JXOo"),
     creatorImg:
@@ -177,7 +176,7 @@ export const videos = [
     description:
       "Easy JavaScript Game Development with Kaboom.js (Mario, Zelda, and Space Invaders) - Full Course",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "1/2/2022",
     view: kFormatter(96000),
     thumbnail: thumbnail("4OaHB0JbJDI"),
     creatorImg:
@@ -191,7 +190,7 @@ export const videos = [
     description:
       "Learn Python in this full tutorial course for beginners. This course takes a project-based approach. We have collected five great Python game tutorials together so you can learn Python while building five games. If you learn best by doing, this is the course for you. ",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "4/5/2022",
     view: kFormatter(96000),
     thumbnail: thumbnail("XGf2GcyHPhc"),
     creatorImg:
@@ -204,7 +203,7 @@ export const videos = [
     title: "Learn Unreal Engine (with C++) ",
     description: "Learn Unreal Engine (with C++) - Full Course for Beginners ",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "2/22/2022",
     view: kFormatter(989000),
     thumbnail: thumbnail("LsNW4FPHuZE"),
     creatorImg:
@@ -218,7 +217,7 @@ export const videos = [
     description:
       "What is an API? Learn all about APIs (Application Programming Interfaces) in this full tutorial for beginners.",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "1/22/2022",
     view: kFormatter(959000),
     thumbnail: thumbnail("GZvSYJDk-us"),
     creatorImg:
@@ -233,7 +232,7 @@ export const videos = [
     description:
       "Learn Python API development in one of the most comprehensive courses ever on the topic. You will build a full-fledged API in Python using FastAPI. ",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "4/25/2020",
     view: kFormatter(959000),
     thumbnail: thumbnail("0sOvCWFmrtA"),
     creatorImg:
@@ -247,7 +246,7 @@ export const videos = [
     description:
       "A REST API is an integral component of a web application. You don't need to be an expert backend developer to make your own. ",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "5/24/2016",
     view: kFormatter(8569000),
     thumbnail: thumbnail("GZvSYJDk-us"),
     creatorImg:
@@ -261,7 +260,7 @@ export const videos = [
     description:
       "This video is a complete React Crash Course for beginners. The video covers different React Topics and implementation in one single project.  ",
     creator: "Dipesh Malvia",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "4/22/2015",
     view: kFormatter(85000),
     thumbnail: thumbnail("0riHps91AzE"),
     creatorImg:
@@ -274,7 +273,7 @@ export const videos = [
     title: "Code 15 React Projects - Complete Course",
     description: "This video is a complete React Crash Course for beginners.",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "9/22/2021",
     view: kFormatter(85000),
     thumbnail: thumbnail("a_7Z7C_JCyo"),
     creatorImg:
@@ -289,7 +288,7 @@ export const videos = [
     description:
       " In this compilation of videos, you'll build a Travel Companion App, a Cryptocurrency App, a Real Estate App, a  Google Clone App, as well as create your own API! ",
     creator: "Freecodecamp",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "3/22/2020",
     view: kFormatter(8508800),
     thumbnail: thumbnail("GDa8kZLNhJ4"),
     creatorImg:
@@ -303,7 +302,7 @@ export const videos = [
     description:
       "In this project we will take a vanilla JS expense tracker app and turn it into a React app using hooks (useState, useContext, useReducer) and the context API.",
     creator: "Traversy Media",
-    timeStamp: fromNow.from(new Date()),
+    timeStamp: "1/22/2021",
     view: kFormatter(8508800),
     thumbnail: thumbnail("XuFDcZABiDQ"),
     creatorImg:
