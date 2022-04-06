@@ -3,12 +3,16 @@ import { createContext, useContext, useReducer, useState } from "react";
 import { useEffect } from "react";
 import { videoReducer } from "../Reducer/Index";
 import { uniqueCategory, filterByCategory } from "../Utils/Index";
+import {postNotes} from "../Services/Index"
+import {useAuthContext} from "../Context/Index"
 
 const VideoContext = createContext();
+
 
 const initialState = {
   videos: [],
   categoryName: "ALL",
+  notes: []
    
 };
 
@@ -30,7 +34,6 @@ const [searchValue, setSearchValue] = useState("")
   //Sort By Latest 
   const getSortByLatest = getFilteredVideo.sort((a, b) => new Date(b.timeStamp) - new Date (a.timeStamp)) 
 
-   
   // Fetching Data from Backend
   useEffect(() => {
     (async () => {
@@ -45,6 +48,8 @@ const [searchValue, setSearchValue] = useState("")
     })();
   }, []);
 
+
+
   return (
     <VideoContext.Provider
       value={{
@@ -54,7 +59,7 @@ const [searchValue, setSearchValue] = useState("")
         getFilteredVideo,
         setActiveSidebar,
         activeSidebar,
-        setSearchValue, searchValue, getSortByLatest
+        setSearchValue, searchValue, getSortByLatest,
       }}
     >
       {children}

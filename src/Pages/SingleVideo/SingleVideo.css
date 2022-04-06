@@ -1,8 +1,16 @@
+
+.single-videos-container{
+  display: flex;
+  gap: 1rem;
+  
+}
+
 .single-video-wrapper {
-  flex: 1;
+  flex: .82;
   max-width: 100rem;
-  margin: 0 auto;
+  
   color: var(--white-text);
+  
 }
 
 .video-frame {
@@ -71,6 +79,7 @@
 @media screen and (min-width: 767px) {
   .video-frame {
     height: 415px;
+    border-radius: 0.5rem;
   }
 
   .video-info li {
@@ -145,6 +154,9 @@
   margin-bottom: 0.2rem;
   background-color: transparent;
   border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .playlist-one .icons {
@@ -174,4 +186,64 @@
   display: flex;
  padding: 1rem;
     
+}
+
+/****Notes***/
+.notes-wrapper{
+  background-color: var(--dark-background-color);
+  height: min-content;
+  flex: .3;
+  color: #fff;
+  padding: .2rem ;
+  border-radius: .5rem;
+}
+
+.notes-wrapper .heading{
+  padding: .5rem 1rem;
+}
+
+.note-form{
+  padding: .5rem;
+}
+.note-form .input{
+    padding: .7rem 1rem;
+    outline: 0;
+}
+
+.note-form .textarea-input{
+  outline: none;
+  margin-top: 0;
+  margin: 1rem 0;
+}
+
+.note-form .btn-add{
+  width: 100%;
+  border-radius: .5rem;
+  padding: .8rem 1rem;
+   
+}
+
+.notes-container{
+  padding: .5rem 1rem;
+  max-height: 30rem;
+  overflow-y: scroll;
+}
+
+.notes-card{
+  background-color: var(--background-color);
+  border-radius: .5rem;
+  padding: .5rem;
+  margin: .5rem 0;
+}
+.notes-card .notes-title{
+  margin-bottom: .5rem;
+}
+
+.notes-card-footer{
+  margin: 1.5rem 0 .5rem 0;
+}
+
+.notes-card-footer .icons{
+  font-size: 1.4rem;
+  margin-right:1rem;
 }

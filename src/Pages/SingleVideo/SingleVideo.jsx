@@ -1,6 +1,6 @@
 import React from "react";
 import "./SingleVideo.css";
-import { VideoIframe } from "../../Component/index";
+import { VideoIframe, NotesCard } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -20,10 +20,7 @@ export const SingleVideo = () => {
 
     const [modal, setModal] = useState(false);
     
-    const {
-        state: { videos },
-        getFilteredVideo,
-    } = useVideoContext();
+    const { getFilteredVideo } = useVideoContext();
 
     const { videoId } = useParams();
 
@@ -60,11 +57,21 @@ export const SingleVideo = () => {
         addToWatchLater(isVideo);
     };
 
-    return (
+    // state for show notes option
+    const [showEditNots, setShowEditOption] = useState(false)
+
+    // Note functionality is not working yet I'm on it
+    const [notesValue, setNoteValue] = useState({title: "", description: ""})
+    const notesHandler = (e) => {
+        e.preventDefault()   
+    }
+    return (  
         getFilteredVideo && (
+        <>
             <div
                 className="single-videos-container main-container"
                 style={{ marginTop: "5rem" }}>
+
                 <div className="single-video-wrapper">
                     <div className="video-player">
                         <VideoIframe videoId={isVideo?._id} />
@@ -129,42 +136,63 @@ export const SingleVideo = () => {
                     </div>
                 </div>
 
-                 {/*  Playlist modal start */ }
-                 <div className="playlist-modal-container"
-                 style={modal ? { display: "flex" } : { display: "none" }}>
-                 <div className="create-playlist-wrapper">
+                {/*Notes Start */}
+               {isAuth &&  <div className="notes-wrapper">
+                    <h2 className="text-md heading">Take Notes</h2>
 
-                     {/*---Add  to new play list and show exiting playlist */}
-                       <h3  className="btn-modal-close space-between">PlayList <FaIcons.FaTimesCircle onClick={() => setModal(false)} className="icons"/></h3>             
-                     <div className="lists-playlist">
-                          {playlists?.map((data, i) => {
-                              return (data.videos.find((eachVideo) => eachVideo._id === isVideo._id) ? <button className="playlist-one" key={i}><FaIcons.FaCheckCircle className="icons tools-icon icon-circle-plus" /> {data.title}  </button>: <button className="playlist-one" key={data._id} onClick={() => addToPlayList(data, isVideo)}>
-                              <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />
-                              {data.title}
-                          </button> )
-                          })}
-                     </div>
+                    {/*Form for new note */}
+                    <form className="note-form">
+                        <input type="text" className="input" placeholder="Title" onChange={(event) => setNoteValue((prev) => ({...prev, title: event.target.value}))} />
+                        <textarea type="text" placeholder="Notes"
+                        className="text-area textarea-input" onChange={(event) => setNoteValue((prev) => ({...prev, description: event.target.value}))}></textarea>
+                        {showEditNots? <button className="btn btn-primary btn-add"> Update Note</button> : <button className="btn btn-primary btn-add" onClick={(e) => notesHandler(e)}> Add Note</button>}
+                    </form>
 
-                     <div className="add-new-playlist">
-                         <div className="input-playlist-wrapper">
-                             <input
-                                 type="text"
-                                 className="input"
-                                 value={playlistName.playlist}
-                                 placeholder="Enter playlist Name" onChange={(event) => setPlaylistName((prev) => ({...prev, playlist: event.target.value}))}
-                             />
-                         </div>
+            
+                    <div className="notes-container">
+                        <NotesCard showEditNots={showEditNots} setShowEditOption={setShowEditOption} />
+                    </div>
 
-                         <button className="btn-playlist-create center" onClick={() => playlistHandler()}>
-                             <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />
-                             Create New Playlist
-                         </button>
-                     </div>
-                 </div>
-                </div>
-                 {/*  Playlist modal end */ }
+                </div>}
+                {/*Notes end*/}
 
             </div>
+
+             {/*  Playlist modal start */ }
+             <div className="playlist-modal-container"
+             style={modal ? { display: "flex" } : { display: "none" }}>
+             <div className="create-playlist-wrapper">
+
+                 {/*---Add  to new play list and show exiting playlist */}
+                   <h3  className="btn-modal-close space-between">PlayList <FaIcons.FaTimesCircle onClick={() => setModal(false)} className="icons"/></h3>             
+                 <div className="lists-playlist">
+                      {playlists?.map((data, i) => {
+                          return (data.videos.find((eachVideo) => eachVideo._id === isVideo._id) ? <button className="playlist-one" key={i}><FaIcons.FaCheckCircle className="icons tools-icon icon-circle-plus" /> {data.title}  </button>: <button className="playlist-one" key={data._id} onClick={() => addToPlayList(data, isVideo)}>
+                          <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />
+                          {data.title}
+                      </button> )
+                      })}
+                 </div>
+
+                 <div className="add-new-playlist">
+                     <div className="input-playlist-wrapper">
+                         <input
+                             type="text"
+                             className="input"
+                             value={playlistName.playlist}
+                             placeholder="Enter playlist Name" onChange={(event) => setPlaylistName((prev) => ({...prev, playlist: event.target.value}))}
+                         />
+                     </div>
+
+                     <button className="btn-playlist-create center" onClick={() => playlistHandler()}>
+                         <FaIcons.FaPlusCircle className="icons tools-icon icon-circle-plus" />
+                         Create New Playlist
+                     </button>
+                 </div>
+             </div>
+            </div>
+             {/*  Playlist modal end */ }
+        </>
         )
     );
 };
