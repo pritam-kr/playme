@@ -9,7 +9,7 @@ export const likesReducer = (state, action) => {
       return { ...state, likedVideo: action.payload };
     
     case REMOVE_LIKED_VIDEO: 
-    return { ...state, likedVideo: action.payload };
+      return { ...state, likedVideo: action.payload };
 
     default:
       return state;

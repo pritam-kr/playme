@@ -68,7 +68,7 @@ const Sidebar = () => {
          {!isAuth ?  <NavLink to="/login" style={getActiveStyle} className="sidebar-links sidebar-logout text-lg " onClick={() => navigate('/login')}>
             <FaIcons.FaUserCircle className="icons sidebar-icons" /> Login
           </NavLink> :  <NavLink to="/logout" style={getActiveStyle} className="sidebar-links sidebar-logout text-lg " onClick={() => logoutHandler()}>
-            <FaIcons.FaUserCircle className="icons sidebar-icons" /> Logout
+            <FaIcons.FaSignOutAlt className="icons sidebar-icons" /> Logout
           </NavLink>}
         </ul>
       </div>

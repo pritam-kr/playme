@@ -14,30 +14,34 @@ export const HistoryContextProvider = ({ children }) => {
   const { isAuth } = useAuthContext();
   const [state, historyDispatch] = useReducer(historyReducer, initialState);
   const { watchedVideo } = state;
+
   //Getting watched (history) from Sever
   useEffect(() => {
     // eslint-disable-next-line no-lone-blocks
-    {
-      isAuth &&
-        (async () => {
-          try {
-            const {
-              data: { history },
-              status,
-            } = await axios.get("/api/user/history", {
-              headers: {
-                authorization: isAuth,
-              },
-            });
+    if(isAuth){
+      (async () => {
+        try {
+          const {
+            data: { history },
+            status,
+          } = await axios.get("/api/user/history", {
+            headers: {
+              authorization: isAuth,
+            },
+          });
 
-            if (status === 200) {
-              historyDispatch({ type: "GET_LIKED_VIDEO", payload: history });
-            }
-          } catch (error) {
-            console.log(error.response);
+          if (status === 200) {
+            historyDispatch({ type: "HISTORY_SAVED", payload: history });
           }
-        })();
+        } catch (error) {
+          console.log(error.response);
+        }
+      })();
+    }else{
+      historyDispatch({ type: "HISTORY_SAVED", payload: [] });
     }
+
+     
   }, [isAuth]);
 
   const addHistoryVideo = async (video) => { 
