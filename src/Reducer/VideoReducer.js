@@ -12,7 +12,7 @@ export const videoReducer = (state, action) => {
       return { ...state, categoryName: "ALL" };
 
     case VIDEOS_CATEGORY_NAME :
-    return {...state, categoryName: action.payload}
+      return {...state, categoryName: action.payload}
 
     default:
       return state;
