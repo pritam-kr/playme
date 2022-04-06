@@ -21,9 +21,7 @@ function App() {
  
 const PrivateRoute = ({children}) =>{
 
-  console.log(isAuth)
   return isAuth ? children :  <Navigate to ="/login" />
-
   
 }
 
