@@ -1,6 +1,6 @@
 import React from "react";
 import "./SingleVideo.css";
-import { VideoIframe, NotesCard } from "../../Component/index";
+import { VideoIframe, NotesCard,  } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -8,15 +8,22 @@ import {
     useLikesContext,
     useAuthContext,
     useWatchLaterContext,
-    usePlaylistContext,
+    usePlaylistContext
     
 } from "../../Context/Index";
 import { useState } from "react";
+import {useNotes} from "../../Hooks/Index"
+import { useEffect } from "react/cjs/react.production.min";
 
 export const SingleVideo = () => {
     const [playlistName, setPlaylistName] = useState({playlist: ""})
     const { isAuth } = useAuthContext();
     const navigate = useNavigate();
+
+    // Notes related Hook 
+    const {createNotes} = useNotes()
+
+
 
     const [modal, setModal] = useState(false);
     
@@ -61,10 +68,17 @@ export const SingleVideo = () => {
     const [showEditNots, setShowEditOption] = useState(false)
 
     // Note functionality is not working yet I'm on it
-    const [notesValue, setNoteValue] = useState({title: "", description: ""})
+    const [notesValue, setNoteValue] = useState({title: "", notBody: ""})
     const notesHandler = (e) => {
         e.preventDefault()   
+
+        
+        //Sending notes to custom hooks useNotes
+        createNotes(notesValue, isAuth)
+
     }
+
+    
     return (  
         getFilteredVideo && (
         <>

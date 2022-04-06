@@ -10,4 +10,5 @@ export {History}  from "./History/History"
 export {PlaylistVideos} from "./PlaylistVideos/PlaylistVideos"
 export {Signup} from "./Signup/Signup"
 export {SortByLatest} from "./SortByLatest/SortByLatest"
+export {Profile} from "./Profile/Profile"
  

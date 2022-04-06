@@ -8,14 +8,13 @@ import axios from "axios";
 import { regEx, loggedMessage } from "../Utils/Index";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-hot-toast"
-import Cookies, {Cookie} from "universal-cookie"
 
 
 const AuthContext = createContext();
-const cookie = new Cookies()
- 
 
+ 
 export const AuthContextProvider = ({ children }) => {
+
     // getting token and userInfo from local Storage
     const token = localStorage.getItem("login-token") || ""
     const userInfo = JSON.parse(localStorage.getItem("user")) || null
@@ -24,16 +23,11 @@ export const AuthContextProvider = ({ children }) => {
     const [error, setError] = useState("")
 
     //setting to useState
-    const [isAuth, setIsAuth] = useState("");
+    const [isAuth, setIsAuth] = useState(token);
      
-    const [user, setUser] = useState( "");
+    const [user, setUser] = useState(userInfo);
 
-    useEffect(() => {
-        setIsAuth(token);
-        setUser(userInfo)
-    }, []);
-
-
+    
     const navigate = useNavigate();
 
 

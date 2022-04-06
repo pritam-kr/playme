@@ -1,0 +1,42 @@
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.profile-card {
+  min-width: 30rem;
+  margin: 0 1rem;
+
+  padding: 1rem;
+}
+
+.user-icon {
+  font-size: 5rem;
+}
+
+.user-info {
+  margin-top: 2rem;
+}
+.user-info .lists {
+  font-size: 1.5rem;
+  color: var(--white-text);
+  margin-bottom: .5rem;
+}
+
+.user-info .lists strong {
+    margin-right: 1rem;
+}
+.user-info .list-logout {
+  margin-top: 2rem;
+  color: var(--secondary-text);
+  font-weight: 900;
+  text-transform: uppercase;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+  font-family: "Roboto", sans-serif;
+}
+
+.user-info .list-logout:hover {
+  color: var(--white-text);
+}

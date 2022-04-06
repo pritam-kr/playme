@@ -66,7 +66,7 @@ const Topbar = () => {
                 <span className="login-text">Login</span>
               </button>
             ) : (
-              <button className="btn btn-primary logged-user-icon center">
+              <button className="btn btn-primary logged-user-icon center" onClick={() =>  navigate('/profile')}>
                 <FaIcons.FaUserCircle className="icons login-icon" />
               </button>
             )}

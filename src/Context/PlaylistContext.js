@@ -16,35 +16,38 @@ export const PlayListContextProvider = ({ children }) => {
   const { isAuth } = useAuthContext();
 
   const [state, playlistDispatch] = useReducer(playlistReducer, initialState);
-  const {  playlists } = state;
+  
  
   //getting playlists from backend
   useEffect(() => {
     // eslint-disable-next-line no-lone-blocks
-    {
-      isAuth &&
-        (async () => {
-          try {
-            const {
-              data: { playlists },
-              status,
-            } = await axios.get("/api/user/playlists", {
-              headers: {
-                authorization: isAuth,
-              },
-            });
 
-            if (status === 200) {
-              playlistDispatch({
-                type: "GET_PLAYLISTS",
-                payload: playlists,
-              });
-            }
-          } catch (error) {
-            toast.error("Error occurred While fetching playlist");
+    if(isAuth){
+      (async () => {
+        try {
+          const {
+            data: { playlists },
+            status,
+          } = await axios.get("/api/user/playlists", {
+            headers: {
+              authorization: isAuth,
+            },
+          });
+
+          if (status === 200) {
+            playlistDispatch({
+              type: "GET_PLAYLISTS",
+              payload: playlists,
+            });
           }
-        })();
+        } catch (error) {
+          toast.error("Error occurred While fetching playlist");
+        }
+      })();
+    }else{
+      playlistDispatch({ type: "CREATE_PLAYLIST", payload: [] });
     }
+
   }, [isAuth]);
 
   // create playlist
