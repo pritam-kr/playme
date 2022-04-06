@@ -1,15 +1,17 @@
 import "./App.css";
 import { Home, SortByLatest } from "./Pages/Index";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { Explore,Login, Playlist, SingleVideo,Signup, WatchLater , Likes, History,PlaylistVideos,Profile} from "./Pages/Index";
+import { Explore, Login, Playlist, SingleVideo,Signup, WatchLater , Likes, History,PlaylistVideos,Profile} from "./Pages/Index";
 import {Sidebar, Topbar,MockAPI} from "./Component/index"
-import {useAuthContext} from "./Context/AuthContext"
+import {useAuthContext} from "./Context/Index"
 import {Toaster} from "react-hot-toast"
 
 
 function App() {
+
   const {isAuth} = useAuthContext()
   const {pathname} = useLocation() 
+
   const SideBar = () => {
     if(pathname !== "/login" && pathname !== "/" && pathname !== "/signup" && pathname !== "/mockman"){
           return <Sidebar />
@@ -18,8 +20,13 @@ function App() {
   }
  
 const PrivateRoute = ({children}) =>{
+
+  console.log(isAuth)
   return isAuth ? children :  <Navigate to ="/login" />
+
+  
 }
+
   return (
     <>
     <Toaster />
@@ -29,7 +36,9 @@ const PrivateRoute = ({children}) =>{
       <Routes>
         <Route path="/" element={<Home />} ></Route>
         <Route path="/explore" element={<Explore />}></Route>
-        {!isAuth && <Route path="/login" element={<Login />} > </Route>}
+
+        {!isAuth && <Route path="/login" element={<Login />} > </Route>} 
+
         <Route path="/signup" element={<Signup />} ></Route>
         <Route path="/playlist" element={<PrivateRoute><Playlist /></PrivateRoute>} > </Route> 
         <Route path="/video/:videoId" element={<SingleVideo />} > </Route>
@@ -37,7 +46,9 @@ const PrivateRoute = ({children}) =>{
         <Route path="/history" element={<PrivateRoute><History /></PrivateRoute>} > </Route>
         <Route path="/likes" element={<PrivateRoute><Likes /></PrivateRoute>} > </Route>
         <Route path="/watchlater" element={<PrivateRoute><WatchLater /></PrivateRoute>} > </Route>
+
         <Route path="/*" element={<Navigate  to="/explore" />}></Route> 
+
         <Route path="/playlist/:playlistId" element={<PrivateRoute><PlaylistVideos /></PrivateRoute>} > </Route>
         <Route path="/latest" element={<SortByLatest />} ></Route>
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} ></Route>
