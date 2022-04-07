@@ -9,20 +9,18 @@ const Topbar = () => {
   const { isAuth } = useAuthContext();
   const { setActiveSidebar, activeSidebar, setSearchValue } = useVideoContext();
   const pathname = useLocation();
+
   // Implementing search Filter feature
   const [searchTerm, setSearchTerm] = useState("");
-  const searchHandler = () => {
-    if (searchTerm === "") {
+  setSearchValue(searchTerm);
+
+  const SearchInputHandler = (event) => {
+    if (pathname === "/explore") {
       return;
-    } else {
-      if (pathname === "/explore") {
-        return;
-      } else {
-        navigate("/explore");
-      }
-      setSearchValue(searchTerm);
+    } else if (event.target) {
+      setSearchTerm(event.target.value);
+      navigate("/explore");
     }
-    setSearchTerm("");
   };
 
   return (
@@ -44,15 +42,11 @@ const Topbar = () => {
         <div className="topbar-center">
           <div className="searchbar-wrapper">
             <input
-              type="text"
+              type="search"
               className="input video-search"
-              value={searchTerm}
               placeholder="Search"
-              onChange={(event) => setSearchTerm(event.target.value)}
+              onChange={(event) => SearchInputHandler(event)}
             />
-            <button className="btn btn-search" onClick={() => searchHandler()}>
-              <FaIcons.FaSearch className="icons topbar-search-icon" />
-            </button>
           </div>
         </div>
         <div className="topbar-right">
@@ -66,7 +60,10 @@ const Topbar = () => {
                 <span className="login-text">Login</span>
               </button>
             ) : (
-              <button className="btn btn-primary logged-user-icon center" onClick={() =>  navigate('/profile')}>
+              <button
+                className="btn btn-primary logged-user-icon center"
+                onClick={() => navigate("/profile")}
+              >
                 <FaIcons.FaUserCircle className="icons login-icon" />
               </button>
             )}
