@@ -9,24 +9,27 @@ export const useNotes =  () => {
     const {isAuth} = useAuthContext()
     const {dispatch} = useVideoContext()
      const createNotes = async (note, token, videoId) => {
-
-        try{
-            const {data: {video}, status} = await axios.post(`/api/video/${videoId}`, {note}, {headers: {authorization: token}})
-             if(status === 201){
-                dispatch({type: "ADD_NOTE", payload: video})
-                toast.success("Notes Added", {position: "top-right"})
-             }
-
-        }
-        catch(error){
-            toast.error("Error happened! Tyr Again", {position: "top-right"})
+ 
+        if(note.title === "" || note.noteBody === ""){
+        toast.error("Input field can not be empty.", {position: "top-right"})
+        }else{
+            try{
+                const {data: {video}, status} = await axios.post(`/api/video/${videoId}`, {note}, {headers: {authorization: token}})
+                 if(status === 201){
+                    dispatch({type: "ADD_NOTE", payload: video})
+                    toast.success("Notes Added", {position: "top-right"})
+                 }
+    
+            }
+            catch(error){
+                toast.error("Error happened! Tyr Again", {position: "top-right"})
+            }
         }
 
      }
 
      const deleteNote = async (noteId, videoId) => {
         
-
         try{
             
             const {data, status} = await axios.delete(`/api/video/${videoId}/${noteId}`, {headers: {authorization: isAuth}})
