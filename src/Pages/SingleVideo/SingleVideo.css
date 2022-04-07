@@ -1,9 +1,6 @@
 
-.single-videos-container{
-  display: flex;
-  gap: 1rem;
-  
-}
+ 
+
 
 .single-video-wrapper {
   flex: .82;
@@ -196,7 +193,10 @@
   color: #fff;
   padding: .2rem ;
   border-radius: .5rem;
+  margin-top: 1rem;
 }
+
+
 
 .notes-wrapper .heading{
   padding: .5rem 1rem;
@@ -246,4 +246,19 @@
 .notes-card-footer .icons{
   font-size: 1.4rem;
   margin-right:1rem;
+}
+
+
+
+@media screen  and (min-width: 976px){
+  .single-videos-container{
+    display: flex;
+    gap: 1rem;
+    
+  }
+
+  .notes-wrapper{
+    margin-top: 0rem;
+  }
+  
 }

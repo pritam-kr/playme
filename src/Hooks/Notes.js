@@ -1,31 +1,49 @@
 // I'm making these files later for making destructured code.
 import axios from "axios"
-import {useState} from "react"
-import {useAuthContext} from "../Context/AuthContext"
+import { useVideoContext, useAuthContext } from "../Context/Index"
+import {toast} from "react-hot-toast"
 
 
-export const useNotes = () => {
-    const [newNotes, setNewNotes] = useState({
-        notes: [],
-        loading: false,
-        error: ""
-    })
+export const useNotes =  () => {
 
-    // Authentication 
     const {isAuth} = useAuthContext()
-     
-     const createNotes = async (note, token) => {
-
-        try{
-            const response = await axios.post("api/user/notes", {note}, {headers: {authorization: token}})
-
-            console.log(response)
-        }
-        catch(error){
-            console.log(error)
+    const {dispatch} = useVideoContext()
+     const createNotes = async (note, token, videoId) => {
+ 
+        if(note.title === "" || note.noteBody === ""){
+        toast.error("Input field can not be empty.", {position: "top-right"})
+        }else{
+            try{
+                const {data: {video}, status} = await axios.post(`/api/video/${videoId}`, {note}, {headers: {authorization: token}})
+                 if(status === 201){
+                    dispatch({type: "ADD_NOTE", payload: video})
+                    toast.success("Notes Added", {position: "top-right"})
+                 }
+    
+            }
+            catch(error){
+                toast.error("Error happened! Tyr Again", {position: "top-right"})
+            }
         }
 
      }
 
-     return {createNotes}
+     const deleteNote = async (noteId, videoId) => {
+        
+        try{
+            
+            const {data, status} = await axios.delete(`/api/video/${videoId}/${noteId}`, {headers: {authorization: isAuth}})
+   
+            if(status === 200){
+                toast.success("Note deleted", {position: "top-right"})
+                dispatch({type: "DELETE_NOTE", payload: data.video})
+            }          
+
+        }catch(error){
+            toast.error("Error happened! Tyr Again", {position: "top-right"})
+        }
+        
+     }
+
+     return {createNotes, deleteNote }
 }

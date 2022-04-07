@@ -5,12 +5,14 @@ import { Explore, Login, Playlist, SingleVideo,Signup, WatchLater , Likes, Histo
 import {Sidebar, Topbar,MockAPI} from "./Component/index"
 import {useAuthContext} from "./Context/Index"
 import {Toaster} from "react-hot-toast"
-
+import {Scroll, PrivateRoute} from "./Hooks/Index"
+ 
 
 function App() {
 
   const {isAuth} = useAuthContext()
   const {pathname} = useLocation() 
+
 
   const SideBar = () => {
     if(pathname !== "/login" && pathname !== "/" && pathname !== "/signup" && pathname !== "/mockman"){
@@ -19,24 +21,17 @@ function App() {
     return null
   }
  
-const PrivateRoute = ({children}) =>{
-
-  return isAuth ? children :  <Navigate to ="/login" />
-  
-}
-
   return (
     <>
     <Toaster />
     <div className="app-container">
       {pathname !== "/" && <Topbar />}
       <SideBar />
+      <Scroll>
       <Routes>
         <Route path="/" element={<Home />} ></Route>
         <Route path="/explore" element={<Explore />}></Route>
-
         {!isAuth && <Route path="/login" element={<Login />} > </Route>} 
-
         <Route path="/signup" element={<Signup />} ></Route>
         <Route path="/playlist" element={<PrivateRoute><Playlist /></PrivateRoute>} > </Route> 
         <Route path="/video/:videoId" element={<SingleVideo />} > </Route>
@@ -44,13 +39,12 @@ const PrivateRoute = ({children}) =>{
         <Route path="/history" element={<PrivateRoute><History /></PrivateRoute>} > </Route>
         <Route path="/likes" element={<PrivateRoute><Likes /></PrivateRoute>} > </Route>
         <Route path="/watchlater" element={<PrivateRoute><WatchLater /></PrivateRoute>} > </Route>
-
         <Route path="/*" element={<Navigate  to="/explore" />}></Route> 
-
         <Route path="/playlist/:playlistId" element={<PrivateRoute><PlaylistVideos /></PrivateRoute>} > </Route>
         <Route path="/latest" element={<SortByLatest />} ></Route>
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} ></Route>
       </Routes>
+      </Scroll>
     </div>
     </>
   ); 
