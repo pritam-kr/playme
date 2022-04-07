@@ -16,6 +16,9 @@
 ### Features 
 
 - Login Authentication
+- Signup Authentication
+- Profile Page
+- Logout    
 - Video like and disliked
 - Categories
 - Single video page
