@@ -37,22 +37,21 @@ export const SingleVideo = () => {
     //For play list
     const {createPlaylist,  addToPlayList, state: {playlists} } = usePlaylistContext()
     
-  
     //Create playlist 
     const playlistHandler = () =>{
          createPlaylist(playlistName)   
          setPlaylistName((prev) => ({...prev, playlist: ""}))
     }
 
-    
-
     // Now match params video ID from existing videos data
     const isVideo = getFilteredVideo?.find(
         (eachVideo) => eachVideo._id === videoId
     );
 
-
+    // Notes Created
     const createdNotes = isVideo?.notes
+
+     
  
     // liked video
     const likeVideoHandler = () => {
@@ -158,7 +157,7 @@ export const SingleVideo = () => {
 
             
                     <div className="notes-container">
-                      {createdNotes?.map((eachNote, i) => <NotesCard title={eachNote.title} description={eachNote.noteBody} key={i}/>)}
+                      {createdNotes?.map((eachNote, i) => <NotesCard title={eachNote.title} description={eachNote.noteBody} key={i} noteId={eachNote._id} videoId={videoId}/>)}
                     </div>
 
                 </div>}

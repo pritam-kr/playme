@@ -18,6 +18,10 @@ export const videoReducer = (state, action) => {
     case "ADD_NOTE" : 
     return {...state, videos: state.videos.map((eachVideo) => eachVideo._id === action.payload._id ? action.payload : eachVideo) }
 
+    case "DELETE_NOTE": 
+ 
+    return {...state, videos: state.videos.map((eachVideo) =>  eachVideo._id === action.payload._id? action.payload : eachVideo )}
+
     default:
       return state;
   }
