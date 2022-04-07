@@ -13,16 +13,12 @@ import {
 } from "../../Context/Index";
 import { useState } from "react";
 import {useNotes} from "../../Hooks/Index"
-import { useEffect } from "react/cjs/react.production.min";
+ 
 
 export const SingleVideo = () => {
     const [playlistName, setPlaylistName] = useState({playlist: ""})
     const { isAuth } = useAuthContext();
     const navigate = useNavigate();
-
-    // Notes related Hook 
-    const {createNotes} = useNotes()
-
 
 
     const [modal, setModal] = useState(false);
@@ -30,8 +26,8 @@ export const SingleVideo = () => {
     const { getFilteredVideo } = useVideoContext();
 
     const { videoId } = useParams();
-
-     
+   
+    const {createNotes} = useNotes()
     //For Liked Video
     const { saveLikedVideo, state: {likedVideo}, removeLikedVideo } = useLikesContext();
  
@@ -48,12 +44,16 @@ export const SingleVideo = () => {
          setPlaylistName((prev) => ({...prev, playlist: ""}))
     }
 
+    
+
     // Now match params video ID from existing videos data
     const isVideo = getFilteredVideo?.find(
         (eachVideo) => eachVideo._id === videoId
     );
 
-     
+
+    const createdNotes = isVideo?.notes
+ 
     // liked video
     const likeVideoHandler = () => {
         saveLikedVideo(isVideo);
@@ -64,18 +64,12 @@ export const SingleVideo = () => {
         addToWatchLater(isVideo);
     };
 
-    // state for show notes option
-    const [showEditNots, setShowEditOption] = useState(false)
-
     // Note functionality is not working yet I'm on it
-    const [notesValue, setNoteValue] = useState({title: "", notBody: ""})
-    const notesHandler = (e) => {
-        e.preventDefault()   
+    const [notesValue, setNoteValue] = useState({title: "", noteBody: ""})
 
-        
+    const notesHandler = () => {
         //Sending notes to custom hooks useNotes
-        createNotes(notesValue, isAuth)
-
+        createNotes(notesValue, isAuth, videoId)
     }
 
     
@@ -155,16 +149,16 @@ export const SingleVideo = () => {
                     <h2 className="text-md heading">Take Notes</h2>
 
                     {/*Form for new note */}
-                    <form className="note-form">
+                    <div className="note-form">
                         <input type="text" className="input" placeholder="Title" onChange={(event) => setNoteValue((prev) => ({...prev, title: event.target.value}))} />
                         <textarea type="text" placeholder="Notes"
-                        className="text-area textarea-input" onChange={(event) => setNoteValue((prev) => ({...prev, description: event.target.value}))}></textarea>
-                        {showEditNots? <button className="btn btn-primary btn-add"> Update Note</button> : <button className="btn btn-primary btn-add" onClick={(e) => notesHandler(e)}> Add Note</button>}
-                    </form>
+                        className="text-area textarea-input" onChange={(event) => setNoteValue((prev) => ({...prev, noteBody: event.target.value}))}></textarea>
+                        <button className="btn btn-primary btn-add" onClick={notesHandler}> Add Note</button>
+                    </div>
 
             
                     <div className="notes-container">
-                        <NotesCard showEditNots={showEditNots} setShowEditOption={setShowEditOption} />
+                      {createdNotes?.map((eachNote, i) => <NotesCard title={eachNote.title} description={eachNote.noteBody} key={i}/>)}
                     </div>
 
                 </div>}

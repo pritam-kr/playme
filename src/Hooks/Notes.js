@@ -1,31 +1,28 @@
 // I'm making these files later for making destructured code.
 import axios from "axios"
-import {useState} from "react"
-import {useAuthContext} from "../Context/AuthContext"
+import { useVideoContext} from "../Context/Index"
+ import {toast} from "react-hot-toast"
 
 
-export const useNotes = () => {
-    const [newNotes, setNewNotes] = useState({
-        notes: [],
-        loading: false,
-        error: ""
-    })
+export const useNotes =  () => {
 
-    // Authentication 
-    const {isAuth} = useAuthContext()
-     
-     const createNotes = async (note, token) => {
+    const {dispatch} = useVideoContext()
+     const createNotes = async (note, token, videoId) => {
 
         try{
-            const response = await axios.post("api/user/notes", {note}, {headers: {authorization: token}})
+            const {data: {video}, status} = await axios.post(`/api/video/${videoId}`, {note}, {headers: {authorization: token}})
 
-            console.log(response)
+             if(status === 201){
+                dispatch({type: "ADD_NOTE", payload: video})
+                toast.success("Notes Added", {position: "top-right"})
+             }
+
         }
         catch(error){
-            console.log(error)
+            toast.error("Error happened! Tyr Again", {position: "top-right"})
         }
 
      }
 
-     return {createNotes}
+     return {createNotes }
 }
