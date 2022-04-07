@@ -6,4 +6,4 @@ export {filterByCategory} from "./FilterByCategory"
 export {regEx} from "./RegEx"
 export {loggedMessage} from "./UserLogged"
 export {timeAgoFormatter} from "./TimeAgo"
- 
+export {scroll} from "./Scroll"
