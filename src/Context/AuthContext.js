@@ -1,7 +1,6 @@
 import {
     createContext,
     useContext,
-    useEffect,
     useState,
 } from "react";
 import axios from "axios";
@@ -27,7 +26,6 @@ export const AuthContextProvider = ({ children }) => {
      
     const [user, setUser] = useState(userInfo);
 
-    
     const navigate = useNavigate();
 
 
