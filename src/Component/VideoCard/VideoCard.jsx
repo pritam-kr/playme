@@ -23,6 +23,7 @@ export const VideoCard = ({ eachVideo }) => {
     state: { playlists },
   } = usePlaylistContext();
   const [playlistName, setPlaylistName] = useState({ playlist: "" });
+ 
 
   //Playlist Handler
   const playlistHandlers = () => {

@@ -3,6 +3,7 @@ import "./Playlist.css";
 import { usePlaylistContext } from "../../Context/PlaylistContext";
 import { PlayListCard, Footer } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
+ 
 
 export const Playlist = () => {
   const [createPlaylistModal, setCreatePlaylistModal] = useState(false);
@@ -18,6 +19,7 @@ export const Playlist = () => {
     setCreatePlaylistModal(false)
   };
 
+ 
   return (
     <>
       <div className="main-container playlist-container">
