@@ -16,6 +16,9 @@
 ### Features 
 
 - Login Authentication
+- Signup Authentication
+- Profile Page
+- Logout    
 - Video like and disliked
 - Categories
 - Single video page
@@ -54,3 +57,15 @@
 #### History Page <br><br>
 
 ![history](./src/assets/history.png)
+
+#### LogIN Page <br><br>
+
+![history](./src/assets/login.png)
+
+#### Signup Page <br><br>
+
+![signup](./src/assets/signup.png)
+
+#### Profile Page <br><br>
+
+![signup](./src/assets/profile.png)
