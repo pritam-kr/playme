@@ -22,7 +22,8 @@
 - Watch later
 - Playlist management feature
 - History management 
-- Search video filter <br><br>
+- Search video filter
+- Notes for Particular video (Add and Delete) <br><br>
 
 ### Pages For video library 
 
