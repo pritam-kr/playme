@@ -4,7 +4,7 @@ import { VIDEOS_CATEGORY_NAME,GET_VIDEO, GET_CATEGORY_NAME, FILTER_RESET } from 
 export const videoReducer = (state, action) => {
   switch (action.type) {
     case GET_VIDEO:
-      return { ...state, videos: action.payload };
+      return { ...state, videos: action.payload, loader: action.loader  };
 
     case GET_CATEGORY_NAME:
       return { ...state, categoryName: action.payload };
@@ -21,6 +21,9 @@ export const videoReducer = (state, action) => {
     case "DELETE_NOTE": 
  
     return {...state, videos: state.videos.map((eachVideo) =>  eachVideo._id === action.payload._id? action.payload : eachVideo )}
+
+    case "FETCH_ERROR":
+    return {...state, loader: action.loader}
 
     default:
       return state;

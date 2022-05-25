@@ -1,21 +1,16 @@
-
- 
-
-
 .single-video-wrapper {
   flex: .82;
   max-width: 100rem;
-  
   color: var(--white-text);
-  
+
 }
 
 .video-frame {
   padding: 1rem;
   background: var(--dark-background-color);
   width: 100%;
-  height: 400px;
- 
+  height: 300px;
+
 }
 
 .video-info {
@@ -42,9 +37,8 @@
   transition: 0.3s all;
 }
 
-.active-liked-video{
-  
-  color: var(--primary-color) ;
+.active-liked-video {
+  color: var(--primary-color);
 }
 
 .video-info li:hover {
@@ -177,88 +171,91 @@
 
 /*+++++++++Button For modal close ++++++++*/
 .btn-modal-close {
-  
- text-align: right;
+
+  text-align: right;
   font-size: 1.3rem;
   display: flex;
- padding: 1rem;
-    
+  padding: 1rem;
+
 }
 
 /****Notes***/
-.notes-wrapper{
+.notes-wrapper {
   background-color: var(--dark-background-color);
   height: min-content;
   flex: .3;
   color: #fff;
-  padding: .2rem ;
+  padding: .2rem;
   border-radius: .5rem;
   margin-top: 1rem;
 }
 
 
 
-.notes-wrapper .heading{
+.notes-wrapper .heading {
   padding: .5rem 1rem;
 }
 
-.note-form{
+.note-form {
   padding: .5rem;
 }
-.note-form .input{
-    padding: .7rem 1rem;
-    outline: 0;
+
+.note-form .input {
+  padding: .7rem 1rem;
+  outline: 0;
 }
 
-.note-form .textarea-input{
+.note-form .textarea-input {
   outline: none;
   margin-top: 0;
   margin: 1rem 0;
 }
 
-.note-form .btn-add{
+.note-form .btn-add {
   width: 100%;
   border-radius: .5rem;
   padding: .8rem 1rem;
-   
+
 }
 
-.notes-container{
+.notes-container {
   padding: .5rem 1rem;
   max-height: 30rem;
   overflow-y: scroll;
 }
 
-.notes-card{
+.notes-card {
   background-color: var(--background-color);
   border-radius: .5rem;
   padding: .5rem;
   margin: .5rem 0;
 }
-.notes-card .notes-title{
+
+.notes-card .notes-title {
   margin-bottom: .5rem;
 }
 
-.notes-card-footer{
+.notes-card-footer {
   margin: 1.5rem 0 .5rem 0;
 }
 
-.notes-card-footer .icons{
+.notes-card-footer .icons {
   font-size: 1.4rem;
-  margin-right:1rem;
+  margin-right: 1rem;
 }
 
 
 
-@media screen  and (min-width: 976px){
-  .single-videos-container{
+@media screen and (min-width: 976px) {
+  .single-videos-container {
     display: flex;
+    justify-content: center;
     gap: 1rem;
-    
+
   }
 
-  .notes-wrapper{
+  .notes-wrapper {
     margin-top: 0rem;
   }
-  
+
 }

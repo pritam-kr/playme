@@ -3,6 +3,7 @@ import * as FaIcons from "react-icons/fa";
 import "./Topbar.css";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useAuthContext, useVideoContext } from "../../Context/Index";
+import { useEffect } from "react";
 
 const Topbar = () => {
   const navigate = useNavigate();
@@ -12,7 +13,10 @@ const Topbar = () => {
 
   // Implementing search Filter feature
   const [searchTerm, setSearchTerm] = useState("");
-  setSearchValue(searchTerm);
+  
+  useEffect(() => {
+    setSearchValue(searchTerm);
+  }, [searchTerm, setSearchValue])
 
   const SearchInputHandler = (event) => {
     if (pathname === "/explore") {

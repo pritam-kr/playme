@@ -10,6 +10,8 @@ const VideoContext = createContext();
 const initialState = {
   videos: [],
   categoryName: "ALL",
+  error: null, 
+  loader: true
 };
  
 export const VideoContextProvider = ({ children }) => {
@@ -17,7 +19,7 @@ const [state, dispatch] = useReducer(videoReducer, initialState);
 const { videos, categoryName } = state;
 const [searchValue, setSearchValue] = useState("")
  
-
+ 
   //Use State for Sidebar
   const [activeSidebar, setActiveSidebar] = useState(true);
 
@@ -33,13 +35,17 @@ const [searchValue, setSearchValue] = useState("")
   // Fetching Data from Backend
   useEffect(() => {
     (async () => {
-      const {
-        status,
-        data: { videos },
-      } = await axios.get("/api/videos");
-
-      if (status === 200) {
-        dispatch({ type: "GET_VIDEO", payload: videos });
+      try{
+        const {
+          status,
+          data: { videos },
+        } = await axios.get("/api/videos");
+  
+        if (status === 200) {
+          dispatch({ type: "GET_VIDEO", payload: videos, loader: false });
+        }
+      }catch(error){
+        dispatch({ type: "FETCH_ERROR", loader: true });
       }
     })();
   }, []);

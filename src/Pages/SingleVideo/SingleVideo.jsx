@@ -1,6 +1,6 @@
 import React from "react";
 import "./SingleVideo.css";
-import { VideoIframe, NotesCard,  } from "../../Component/index";
+import { VideoIframe, NotesCard, Footer  } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -163,7 +163,9 @@ export const SingleVideo = () => {
                 </div>}
                 {/*Notes end*/}
 
+               
             </div>
+            <Footer />
 
              {/*  Playlist modal start */ }
              <div className="playlist-modal-container"
