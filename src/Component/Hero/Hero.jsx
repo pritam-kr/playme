@@ -52,8 +52,7 @@ const Hero = () => {
             </button>
           ))}
         </div>
-
-        <FaIcons.FaGithub />
+ 
       </div>
     </div>
   );
