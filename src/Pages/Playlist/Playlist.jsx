@@ -40,7 +40,7 @@ export const Playlist = () => {
       <div className="create-playlist-modal-wrapper" style={createPlaylistModal===false ? {display: "none"}: {display: "flex"}}>
      
         <div className="create-playlist-modal" > 
-        <div className="space-between modal-close-button"> <h4 className="text-sm">PlayList</h4> <FaIcons.FaTimesCircle className="icons tools-icon " onClick={() => setCreatePlaylistModal(false)}/></div>
+        <div className="space-between modal-close-button"> <h4 className="text-md">PlayList</h4> <FaIcons.FaTimesCircle className="icons tools-icon " onClick={() => setCreatePlaylistModal(false)}/></div>
           <div className="input-playlist-wrapper">
             <input
               type="text"
