@@ -17,7 +17,7 @@ const initialState = {
 export const VideoContextProvider = ({ children }) => {
 const [state, dispatch] = useReducer(videoReducer, initialState);
 const { videos, categoryName } = state;
-const [searchValue, setSearchValue] = useState("")
+ 
  
  
   //Use State for Sidebar
@@ -60,7 +60,7 @@ const [searchValue, setSearchValue] = useState("")
         getFilteredVideo,
         setActiveSidebar,
         activeSidebar,
-        setSearchValue, searchValue, getSortByLatest,
+          getSortByLatest,
       }}
     >
       {children}
