@@ -53,8 +53,6 @@ const { videos, categoryName } = state;
           data: { errors },
         } = error.response;
         toast.error(...errors , { position: "top-right" });
-
-        // dispatch({ type: "FETCH_ERROR", loader: true });
       }
     })();
   }, []);
