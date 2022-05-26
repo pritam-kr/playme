@@ -2,7 +2,7 @@ import React from "react";
 import "./SingleVideo.css";
 import { VideoIframe, NotesCard, Footer } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
-import { useParams, useNavigate,} from "react-router-dom";
+import { useParams, useNavigate, useLocation,} from "react-router-dom";
 import {
   useVideoContext,
   useLikesContext,
@@ -25,6 +25,11 @@ export const SingleVideo = () => {
   const { videoId } = useParams();
 
   const { createNotes } = useNotes();
+
+ const location =  useLocation()
+
+  //from we are comming from
+  const from = location.state?.from?.pathname || "/explore";
   //For Liked Video
   const {
     saveLikedVideo,
@@ -112,7 +117,7 @@ export const SingleVideo = () => {
                     <li
                       className="text-lg btn-likes"
                       onClick={() =>
-                        isAuth ? likeVideoHandler() : navigate("/login")
+                        isAuth ? likeVideoHandler() : navigate('/login')
                       }
                     >
                       <FaIcons.FaThumbsUp className="icons sidebar-icons" />{" "}
