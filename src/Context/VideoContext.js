@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useContext, useReducer, useState } from "react";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
+ 
 import { videoReducer } from "../Reducer/Index";
 import { uniqueCategory, filterByCategory } from "../Utils/Index";
  
@@ -21,9 +22,9 @@ const [state, dispatch] = useReducer(videoReducer, initialState);
 const { videos, categoryName } = state;
  
  
- 
   //Use State for Sidebar
   const [activeSidebar, setActiveSidebar] = useState(true);
+
 
   // getting all categories name
   const getUniqueCategory = uniqueCategory(videos, "categoryName");
