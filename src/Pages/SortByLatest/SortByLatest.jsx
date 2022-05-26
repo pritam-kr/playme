@@ -6,7 +6,7 @@ import {
   useAuthContext,
 } from "../../Context/Index";
 import * as FaIcons from "react-icons/fa";
-import { timeAgoFormatter } from "../../Utils/Index";
+import { timeAgoFormatter, descriptionShort } from "../../Utils/Index";
 import "./Style.css";
 import { useNavigate } from "react-router-dom";
 
@@ -28,15 +28,13 @@ const SortByLatest = () => {
           <h1 className="text-md">Latest Video ({getSortByLatest?.length})</h1>
         </header>
 
-        <div className="playlist-wrapper history-video-wrapper">
+        <div className="horizontal-video-wrapper">
           {getSortByLatest?.map((eachVideo, i) => {
             return (
               <div
-                className="images-card horizontal-cart-card history-card"
-                key={i}
-              >
-                <img
-                  className="card-img"
+                className="latest-card" key={i}>
+
+                <img className="horizontal-card-thumbnail"
                   src={eachVideo.thumbnail}
                   alt={eachVideo.title}
                   onClick={() => singleVideoHandler(eachVideo)}
@@ -46,7 +44,7 @@ const SortByLatest = () => {
                   <h3 className="video-title space-between">
                     {eachVideo.title}
                   </h3>
-                  <p className="creator-title text-xm">
+                  <p className="creator-title text-xm channel-name">
                     {eachVideo.creator}
                     <FaIcons.FaCheckCircle className="icons" />
                   </p>
@@ -56,9 +54,10 @@ const SortByLatest = () => {
                     <span>{timeAgoFormatter(eachVideo.timeStamp)}</span>
                   </p>
                   <p className="card-text video-description">
-                    {eachVideo.description}
+                    {descriptionShort(eachVideo.description)}
                   </p>
                 </div>
+
               </div>
             );
           })}

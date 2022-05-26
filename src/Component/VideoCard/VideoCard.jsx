@@ -31,7 +31,6 @@ export const VideoCard = ({ eachVideo }) => {
   };
 
   //Modal Handler
-
   const modalHandler = () => {
     setCreatePlaylistModal(true);
     setTool(false);

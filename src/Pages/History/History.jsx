@@ -1,7 +1,7 @@
 import React from "react";
 import * as FaIcons from "react-icons/fa";
 import "./History.css"
-import {HistoryCard, Footer} from "../../Component/index"
+import {HistoryCard, Footer, FixedLoader} from "../../Component/index"
 import {useHistoryContext} from "../../Context/Index"
 
 const History = () => {
@@ -18,13 +18,15 @@ const History = () => {
         </button>}
       </header>
 
-      <div className="playlist-wrapper history-video-wrapper">
-        {watchedVideo?.map((eachVideo) => <HistoryCard key={eachVideo._id} eachVideo={eachVideo}/>)}
+      <div className="horizontal-video-wrapper">
+        {watchedVideo?.length === 0 ? <FixedLoader message={"History is cleared. Please watch 😊"} /> : watchedVideo?.map((eachVideo) => <HistoryCard key={eachVideo._id} eachVideo={eachVideo}/>)}
       </div>
     </div>
     <Footer />
     </>
-  );
+  ); 
 };
 
 export { History };
+
+ 
