@@ -22,7 +22,10 @@ export const useNotes =  () => {
     
             }
             catch(error){
-                toast.error("Error happened! Tyr Again", {position: "top-right"})
+                const {
+                    data: { errors },
+                  } = error.response;
+                  toast.error(...errors , { position: "top-right" });
             }
         }
 
@@ -40,7 +43,10 @@ export const useNotes =  () => {
             }          
 
         }catch(error){
-            toast.error("Error happened! Tyr Again", {position: "top-right"})
+            const {
+                data: { errors },
+              } = error.response;
+              toast.error(...errors , { position: "top-right" });
         }
         
      }
