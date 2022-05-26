@@ -11,7 +11,6 @@ export const AuthContextProvider = ({ children }) => {
 
   //from we are comming from
   const from = location.state?.from?.pathname || "/explore";
- 
 
   // getting token and userInfo from local Storage
   const token = localStorage.getItem("login-token") || "";
@@ -49,13 +48,12 @@ export const AuthContextProvider = ({ children }) => {
         } = await axios.post("/api/auth/login", formData);
 
         if (status === 200) {
-          navigate(from);
           localStorage.setItem("login-token", encodedToken);
           localStorage.setItem("user", JSON.stringify(foundUser));
 
           setIsAuth(encodedToken);
           setUser(foundUser);
-
+          navigate(from);
           //User Logged message showing
           loggedMessage(foundUser);
           setError("");

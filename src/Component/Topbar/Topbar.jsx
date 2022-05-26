@@ -6,6 +6,7 @@ import { useAuthContext, useVideoContext } from "../../Context/Index";
 
 import { SearchResult } from "../SearchResult/SearchResult";
 import debounce from "lodash.debounce";
+import { useRef } from "react";
 
 const Topbar = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const Topbar = () => {
   // Implementing search Filter feature
   const [searchTerm, setSearchTerm] = useState({ query: "" });
   const [showSearchResult, setShowSearchResult] = useState(false);
+
 
   const SearchInputHandler = (event) => {
     if (/^\s/.test(event.target.value)) {
@@ -36,6 +38,9 @@ const Topbar = () => {
     []
   );
 
+  const inputRef = useRef()
+ 
+
   return (
     //Top bar
     <header className="topbar">
@@ -55,11 +60,12 @@ const Topbar = () => {
 
         <div className="topbar-center">
           <div className="searchbar-wrapper">
-            <input
+            <input  ref={inputRef}
               type="search"
               className="input video-search"
               placeholder="Search"
-              onChange={debouncedChangeHandler}
+              onChange={debouncedChangeHandler}  
+            
             />
 
             {/*Search result start  */}
@@ -68,6 +74,7 @@ const Topbar = () => {
                 searchQuery={searchTerm}
                 setSearchTerm={setSearchTerm}
                 setShowSearchResult={setShowSearchResult}
+                inputRef = {inputRef}
               />
             )}
             {/*Search result end  */}
