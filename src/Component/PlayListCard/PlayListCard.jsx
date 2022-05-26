@@ -1,7 +1,6 @@
 import React from "react";
 import "./PlayListCard.css";
 import {useNavigate} from "react-router-dom"
-import toast from "react-hot-toast";
 import * as FaIcons from "react-icons/fa"
 import {usePlaylistContext} from "../../Context/Index"
 
@@ -21,7 +20,7 @@ const PlayListCard = ({ eachPlaylist }) => {
         <img
           src={
             videos?.length === 0
-              ? "https://res.cloudinary.com/dhqxln7zi/image/upload/v1648118531/new_vohp8t.jpg"
+              ? "https://res.cloudinary.com/dhqxln7zi/image/upload/v1653555826/new_vohp8t_cxcfea.jpg"
               : videos.slice(-1)[0]?.thumbnail
           }
           onClick={() => playlistVideosHandler()}
