@@ -1,1 +1,11 @@
- 
+ .liked-video-wrapper, .watchlater-video-wrapper, .playlist-videos-wrapper{
+     justify-content: flex-start;
+ }
+
+
+ @media screen and (max-width: 467px) {
+    .liked-video-wrapper, .watchlater-video-wrapper, .playlist-videos-wrapper{
+        justify-content: center;
+    }
+   
+ }
