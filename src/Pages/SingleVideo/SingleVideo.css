@@ -37,12 +37,13 @@
   transition: 0.3s all;
 }
 
-.active-liked-video {
+.video-info .active-liked-video {
   color: var(--primary-color);
+
 }
 
+
 .video-info li:hover {
-  background-color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -259,3 +260,5 @@
   }
 
 }
+
+.active-liked-video {}

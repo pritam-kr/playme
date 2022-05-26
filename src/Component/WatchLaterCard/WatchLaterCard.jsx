@@ -20,7 +20,7 @@ const WatchLaterCard = ({eachVideo}) => {
     }
 
     const removeWatchLaterVideoHandler = ()=>{
-        removeWatchLater(eachVideo)
+        removeWatchLater(eachVideo._id)
         setTool(false)
     }
 

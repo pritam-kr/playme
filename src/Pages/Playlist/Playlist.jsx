@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Playlist.css";
 import { usePlaylistContext } from "../../Context/PlaylistContext";
-import { PlayListCard, Footer } from "../../Component/index";
+import { PlayListCard, Footer, FixedLoader } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
  
 
@@ -29,8 +29,10 @@ export const Playlist = () => {
           <button className="btn btn-primary center" onClick={() => setCreatePlaylistModal(true)}><FaIcons.FaPlusCircle className="icons" />Playlist</button>
         </header>
 
+        {playlists?.length === 0 ? <FixedLoader message={"Their is not Playlist created. 😊"} /> : ""}
+
         <div className="playlist-wrapper playlist-video-wrapper">
-          {playlists?.map((eachPlaylist) => (
+          { playlists?.map((eachPlaylist) => (
             <PlayListCard eachPlaylist={eachPlaylist} key={eachPlaylist._id} />
           ))}
         </div>
@@ -64,7 +66,7 @@ export const Playlist = () => {
           </button>
         </div>
       </div>
-      {/*==Modal for create playlist==*/}
+      {/*Modal for create playlist==*/}
 
       <Footer />
     </>

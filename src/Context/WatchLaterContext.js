@@ -94,15 +94,15 @@ export const WatchLaterContextProvider = ({ children }) => {
   };
 
   //remove to watchlater video
-  const removeWatchLater = async (video) => {
-    const { _id } = video;
+  const removeWatchLater = async (videoId) => {
+    // const { _id } = video;
 
-    if (watchLater.find((eachVideo) => eachVideo._id === video._id)) {
+    if (watchLater.find((eachVideo) => eachVideo._id === videoId)) {
       try {
         const {
           status,
           data: { watchLater },
-        } = await axios.delete(`/api/user/watchLater/${_id}`, {
+        } = await axios.delete(`/api/user/watchLater/${videoId}`, {
           headers: {
             authorization: isAuth,
           },

@@ -1,4 +1,10 @@
  
+
+.history-container{
+    max-width: 100rem;
+   
+}
+
  .btn-clear .icons{
     color: var(--white-text);
      margin-right: .5rem;
