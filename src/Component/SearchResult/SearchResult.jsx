@@ -11,7 +11,7 @@ const SearchResult = ({ searchQuery, setShowSearchResult, setSearchTerm }) => {
     state: { videos },
   } = useVideoContext();
 
-  const isSearched = videos?.filter(
+  const isSearched = [...videos]?.filter(
     (eachVideo) =>
       eachVideo.title.toLowerCase().includes(searchQuery.query.toLowerCase()) ||
       eachVideo.categoryName.toLowerCase().includes(searchQuery.query.toLowerCase())

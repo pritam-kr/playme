@@ -11,7 +11,7 @@ export const AuthContextProvider = ({ children }) => {
 
   //from we are comming from
   const from = location.state?.from?.pathname || "/explore";
-//   console.log(location)
+ 
 
   // getting token and userInfo from local Storage
   const token = localStorage.getItem("login-token") || "";
@@ -31,7 +31,6 @@ export const AuthContextProvider = ({ children }) => {
   const logoutHandler = () => {
     if (isAuth) {
       setIsAuth("");
-
       localStorage.removeItem("login-token");
       localStorage.removeItem("user");
       toast.success("User Logout!!", { position: "top-right" });
@@ -59,12 +58,13 @@ export const AuthContextProvider = ({ children }) => {
 
           //User Logged message showing
           loggedMessage(foundUser);
+          setError("");
         }
       } catch (error) {
         const {
           data: { errors },
         } = error.response;
-        setError(errors);
+        setError(...errors);
       }
     } else if (!regEx.test(formData.email)) {
       setError("Email is not valid. Try Again");

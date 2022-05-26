@@ -1,8 +1,10 @@
 import axios from "axios";
 import { createContext, useContext, useReducer, useState } from "react";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 import { videoReducer } from "../Reducer/Index";
 import { uniqueCategory, filterByCategory } from "../Utils/Index";
+ 
  
 const VideoContext = createContext();
 
@@ -45,7 +47,13 @@ const { videos, categoryName } = state;
           dispatch({ type: "GET_VIDEO", payload: videos, loader: false });
         }
       }catch(error){
-        dispatch({ type: "FETCH_ERROR", loader: true });
+
+        const {
+          data: { errors },
+        } = error.response;
+        toast.error(...errors , { position: "top-right" });
+
+        // dispatch({ type: "FETCH_ERROR", loader: true });
       }
     })();
   }, []);

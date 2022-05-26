@@ -29,39 +29,30 @@ const Sidebar = () => {
 
           <NavLink to="/explore" style={getActiveStyle}
             className="sidebar-links sidebar-explore text-lg"
-            onClick={() => navigate("/explore")}
+             
           >
             <FaIcons.FaCompass className="icons sidebar-icons" /> Explore
           </NavLink>
 
-          <NavLink to="/playlist" style={getActiveStyle} className="sidebar-links sidebar-playlist text-lg" onClick={() => {
-            !isAuth ? navigate("/login") : navigate("/playlist");
-          }}>
+          <NavLink to="/playlist" style={getActiveStyle} className="sidebar-links sidebar-playlist text-lg" >
             <FaIcons.FaFolderPlus className="icons sidebar-icons" /> Playlist
           </NavLink>
 
           <NavLink to="/likes" style={getActiveStyle}
             className="sidebar-links sidebar-likes text-lg"
-            onClick={() => {
-              !isAuth ? navigate("/login") : navigate("/likes");
-            }}
+           
           >
             <FaIcons.FaThumbsUp className="icons sidebar-icons" /> Likes
           </NavLink>
 
           <NavLink to="/watchlater" style={getActiveStyle}
             className="sidebar-links sidebar-watch-later text-lg"
-            onClick={() => {
-              !isAuth ? navigate("/login") : navigate("/watchlater");
-            }}
+            
           >
             <FaIcons.FaClock className="icons sidebar-icons" /> Watch Later
           </NavLink>
           <NavLink to="/history" style={getActiveStyle}
             className="sidebar-links sidebar-history text-lg"
-            onClick={() => {
-              !isAuth ? navigate("/login") : navigate("/history");
-            }}
           >
             <FaIcons.FaHistory className="icons sidebar-icons" /> History
           </NavLink>

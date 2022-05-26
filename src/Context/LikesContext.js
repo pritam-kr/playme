@@ -1,9 +1,8 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import axios from "axios";
 import { useAuthContext } from "./Index";
-import { toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { likesReducer } from "../Reducer/LikesReducer";
- 
 
 const initialState = {
   likedVideo: [],
@@ -20,8 +19,8 @@ export const LikesContextProvider = ({ children }) => {
   // Getting data from liked video and dispatching to initial state
   useEffect(() => {
     // eslint-disable-next-line no-lone-blocks
-     
-    if(isAuth){
+
+    if (isAuth) {
       (async () => {
         try {
           const {
@@ -37,20 +36,21 @@ export const LikesContextProvider = ({ children }) => {
             likesDispatch({ type: "GET_LIKED_VIDEO", payload: likes });
           }
         } catch (error) {
-          console.log(error.response);
-          toast.error("Error occurred While fetching video");
+          const {
+            data: { errors },
+          } = error.response;
+
+          toast.error(...errors, { position: "top-right" });
         }
       })();
-    }else{
-      likesDispatch({type: "GET_LIKED_VIDEO", payload: []})
+    } else {
+      likesDispatch({ type: "GET_LIKED_VIDEO", payload: [] });
     }
-        
-    
   }, [isAuth]);
 
   const saveLikedVideo = async (video) => {
     if (likedVideo.find((eachVideo) => eachVideo._id === video._id)) {
-      toast.error("Video already liked!" , { position: "top-right" });
+      toast.error("Video already liked!", { position: "top-right" });
       return;
     } else {
       try {
@@ -75,35 +75,34 @@ export const LikesContextProvider = ({ children }) => {
         const {
           data: { errors },
         } = error.response;
-        console.log(errors);
+
         toast.error(...errors, { position: "top-right" });
       }
     }
   };
 
   const removeLikedVideo = async (videoId) => {
-   
     if (likedVideo.find((eachVideo) => eachVideo._id === videoId)) {
       try {
         const {
           status,
           data: { likes },
-        } = await axios.delete(
-           `/api/user/likes/${videoId}`,
-          {
-            headers: {
-              authorization: isAuth,
-            },
-          }
-        );
+        } = await axios.delete(`/api/user/likes/${videoId}`, {
+          headers: {
+            authorization: isAuth,
+          },
+        });
 
-        
         if (status === 200) {
           toast.success("Video Removed!", { position: "top-right" });
-          likesDispatch({type: "REMOVE_LIKED_VIDEO", payload: likes})
+          likesDispatch({ type: "REMOVE_LIKED_VIDEO", payload: likes });
         }
       } catch (error) {
-        toast.error("Error occurred in remove liked video", {position: "top-right"})
+        const {
+          data: { errors },
+        } = error.response;
+
+        toast.error(...errors, { position: "top-right" });
       }
     }
   };
