@@ -19,7 +19,7 @@ const History = () => {
       </header>
 
       <div className="horizontal-video-wrapper">
-        {watchedVideo?.length === 0 ? <FixedLoader message={"History is cleared. Please watch 😊"} /> : watchedVideo?.map((eachVideo) => <HistoryCard key={eachVideo._id} eachVideo={eachVideo}/>)}
+        {watchedVideo?.length === 0 ? <FixedLoader message={"History is cleared. Please watch 😊"} /> : [...watchedVideo].reverse()?.map((eachVideo) => <HistoryCard key={eachVideo._id} eachVideo={eachVideo}/>)}
       </div>
     </div>
     <Footer />

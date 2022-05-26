@@ -2,7 +2,7 @@ import React from "react";
 import "./SingleVideo.css";
 import { VideoIframe, NotesCard, Footer } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
-import { useParams, useNavigate, useLocation,} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   useVideoContext,
   useLikesContext,
@@ -26,10 +26,6 @@ export const SingleVideo = () => {
 
   const { createNotes } = useNotes();
 
- const location =  useLocation()
-
-  //from we are comming from
-  const from = location.state?.from?.pathname || "/explore";
   //For Liked Video
   const {
     saveLikedVideo,
@@ -39,7 +35,8 @@ export const SingleVideo = () => {
 
   // For Watch Later Video
   const {
-    addToWatchLater, removeWatchLater,
+    addToWatchLater,
+    removeWatchLater,
     state: { watchLater },
   } = useWatchLaterContext();
 
@@ -117,7 +114,7 @@ export const SingleVideo = () => {
                     <li
                       className="text-lg btn-likes"
                       onClick={() =>
-                        isAuth ? likeVideoHandler() : navigate('/login')
+                        isAuth ? likeVideoHandler() : navigate("/login")
                       }
                     >
                       <FaIcons.FaThumbsUp className="icons sidebar-icons" />{" "}
@@ -126,7 +123,10 @@ export const SingleVideo = () => {
                   )}
 
                   {watchLater.find((eachVideo) => eachVideo._id === videoId) ? (
-                    <li className="text-lg" onClick={() => removeWatchLater(videoId)}>
+                    <li
+                      className="text-lg"
+                      onClick={() => removeWatchLater(videoId)}
+                    >
                       <FaIcons.FaClock className="icons sidebar-icons active-liked-video" />{" "}
                       Watch Later
                     </li>
