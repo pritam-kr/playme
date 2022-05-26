@@ -2,7 +2,7 @@ import React from "react";
 import "./SingleVideo.css";
 import { VideoIframe, NotesCard, Footer  } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import {
     useVideoContext,
     useLikesContext,
@@ -70,6 +70,9 @@ export const SingleVideo = () => {
         //Sending notes to custom hooks useNotes
         createNotes(notesValue, isAuth, videoId)
     }
+
+
+    
 
     
     return (  

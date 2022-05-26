@@ -34,7 +34,11 @@ export const HistoryContextProvider = ({ children }) => {
             historyDispatch({ type: "HISTORY_SAVED", payload: history });
           }
         } catch (error) {
-          console.log(error.response);
+          const {
+            data: { errors },
+          } = error.response;
+    
+          toast.error(...errors , { position: "top-right" });
         }
       })();
     }else{
@@ -66,10 +70,11 @@ export const HistoryContextProvider = ({ children }) => {
           historyDispatch({ type: "HISTORY_SAVED", payload: history });
         }
       } catch (error) {
-        console.log(error.response);
-        toast.error("Error occured in History context", {
-          position: "top-right",
-        });
+        const {
+          data: { errors },
+        } = error.response;
+  
+        toast.error(...errors , { position: "top-right" });
       }
     }
   };
@@ -91,7 +96,11 @@ export const HistoryContextProvider = ({ children }) => {
           historyDispatch({ type: "CLEAR_HISTORY", payload: history });
         }
       } catch (error) {
-        console.log(error);
+        const {
+          data: { errors },
+        } = error.response;
+  
+        toast.error(...errors , { position: "top-right" });
       }
     }
   };
@@ -104,7 +113,11 @@ export const HistoryContextProvider = ({ children }) => {
             historyDispatch({type: "DELETE_HISTORY", payload: history})
           }
       }catch(error){
-
+        const {
+          data: { errors },
+        } = error.response;
+  
+        toast.error(...errors , { position: "top-right" });
       }
   }
 

@@ -33,12 +33,18 @@
 
 .create-playlist-modal {
   border-radius: 0.5rem;
-  max-width: 45rem;
+  max-width: 20rem;
+  width: 30rem;
   background-color: var(--white-text);
+   
 }
 .create-playlist-modal .input{
     border-bottom: 1px solid var(--border-color);
    
+}
+
+.create-playlist-modal .input-playlist-wrapper .input{
+  padding: 1rem;
 }
 .create-playlist-modal .btn-playlist-create{
     width: 100%;

@@ -17,7 +17,7 @@ export const WatchLaterContextProvider = ({ children }) => {
     watchLaterReducer,
     initialState
   );
-  const {watchLater} = state
+  const { watchLater } = state;
 
   // Getting data from watchlater video and dispatching to initial state
   useEffect(() => {
@@ -42,18 +42,25 @@ export const WatchLaterContextProvider = ({ children }) => {
               });
             }
           } catch (error) {
-            toast.error("Error occurred While fetching video from watchLater");
+            const {
+              data: { errors },
+            } = error.response;
+
+            toast.error(...errors , {
+              position: "top-right",
+            });
           }
         })();
     }
   }, [isAuth]);
 
   //Add to watchlater
-  const addToWatchLater = async(video) => {
-
+  const addToWatchLater = async (video) => {
     if (watchLater.find((eachVideo) => eachVideo._id === video._id)) {
-      toast.error("Video already Added to watch Later!" , { position: "top-right" });
-      return;
+      toast.error("Video already Added to watch Later!", {
+        position: "top-right",
+      });
+      return; 
     } else {
       try {
         const {
@@ -71,45 +78,51 @@ export const WatchLaterContextProvider = ({ children }) => {
 
         if (status === 201) {
           toast.success("Successfully Added!", { position: "top-right" });
-          watchLaterDispatch({ type: "SAVED_WATCHLATER_VIDEO", payload: watchLater });
+          watchLaterDispatch({
+            type: "SAVED_WATCHLATER_VIDEO",
+            payload: watchLater,
+          });
         }
       } catch (error) {
-         toast.error("Error occurred in add to Watch Later videos", {position: "top-right"})
+        const {
+          data: { errors },
+        } = error.response;
+
+        toast.error(...errors, { position: "top-right" });
       }
     }
-
   };
 
   //remove to watchlater video
-  const removeWatchLater = async(video) => {
-
+  const removeWatchLater = async (video) => {
     const { _id } = video;
-    
+
     if (watchLater.find((eachVideo) => eachVideo._id === video._id)) {
       try {
         const {
           status,
-           data: {watchLater}
-        } = await axios.delete(
-           `/api/user/watchLater/${_id}`,
-          {
-            headers: {
-              authorization: isAuth,
-            },
-          }
-        );
+          data: { watchLater },
+        } = await axios.delete(`/api/user/watchLater/${_id}`, {
+          headers: {
+            authorization: isAuth,
+          },
+        });
 
-         
         if (status === 200) {
           toast.success("Video Removed!", { position: "top-right" });
-          watchLaterDispatch({type: "REMOVE_WATCHLATER_VIDEO", payload:watchLater})
+          watchLaterDispatch({
+            type: "REMOVE_WATCHLATER_VIDEO",
+            payload: watchLater,
+          });
         }
       } catch (error) {
-        toast.error("Error occurred in remove liked video", {position: "top-right"})
+        const {
+          data: { errors },
+        } = error.response;
+
+        toast.error(...errors , { position: "top-right" });
       }
     }
-    
-
   };
 
   return (

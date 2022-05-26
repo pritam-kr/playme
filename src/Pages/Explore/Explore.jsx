@@ -21,15 +21,8 @@ export const Explore = () => {
                 </div>
 
                 {/* Video listing cards will show here */}
-
                 {loader? <div className="loader-container"><Gif /></div> : <div className="video-container">
-                {getFilteredVideo?.filter((eachVideo) => {
-                         if(searchValue === ""){
-                             return eachVideo
-                         }else if(eachVideo.title.toLowerCase().includes(searchValue.toLowerCase())){
-                             return eachVideo
-                         } 
-                     }).map((eachVideo) => <VideoCard  eachVideo={eachVideo} key={eachVideo.id}/> )}
+                {getFilteredVideo?.map((eachVideo) => <VideoCard  eachVideo={eachVideo} key={eachVideo.id}/> )}
                 </div>}
 
             </div>
@@ -39,3 +32,12 @@ export const Explore = () => {
         </>
     );
 };
+
+
+// getFilteredVideo?.filter((eachVideo) => {
+//     if(searchValue === ""){
+//         return eachVideo
+//     }else if(eachVideo.title.toLowerCase().includes(searchValue.toLowerCase())){
+//         return eachVideo
+//     } 
+// })

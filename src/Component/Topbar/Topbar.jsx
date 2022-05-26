@@ -1,31 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import * as FaIcons from "react-icons/fa";
 import "./Topbar.css";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext, useVideoContext } from "../../Context/Index";
-import { useEffect } from "react";
+
+import { SearchResult } from "../SearchResult/SearchResult";
+import debounce from "lodash.debounce";
 
 const Topbar = () => {
   const navigate = useNavigate();
   const { isAuth } = useAuthContext();
-  const { setActiveSidebar, activeSidebar, setSearchValue } = useVideoContext();
-  const pathname = useLocation();
+  const { setActiveSidebar, activeSidebar } = useVideoContext();
 
   // Implementing search Filter feature
-  const [searchTerm, setSearchTerm] = useState("");
-  
-  useEffect(() => {
-    setSearchValue(searchTerm);
-  }, [searchTerm, setSearchValue])
+  const [searchTerm, setSearchTerm] = useState({ query: "" });
+  const [showSearchResult, setShowSearchResult] = useState(false);
 
   const SearchInputHandler = (event) => {
-    if (pathname === "/explore") {
+    if (/^\s/.test(event.target.value)) {
+      setShowSearchResult(false);
       return;
-    } else if (event.target) {
-      setSearchTerm(event.target.value);
-      navigate("/explore");
+    } else {
+      if (event.target.value.length > 0) {
+        setShowSearchResult(true);
+        setSearchTerm((prev) => ({ ...prev, query: event.target.value }));
+      } else {
+        setShowSearchResult(false);
+      }
     }
   };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedChangeHandler = useCallback(
+    debounce(SearchInputHandler, 500),
+    []
+  );
 
   return (
     //Top bar
@@ -43,16 +52,28 @@ const Topbar = () => {
             </Link>
           </div>
         </div>
+
         <div className="topbar-center">
           <div className="searchbar-wrapper">
             <input
               type="search"
               className="input video-search"
               placeholder="Search"
-              onChange={(event) => SearchInputHandler(event)}
+              onChange={debouncedChangeHandler}
             />
+
+            {/*Search result start  */}
+            {showSearchResult && (
+              <SearchResult
+                searchQuery={searchTerm}
+                setSearchTerm={setSearchTerm}
+                setShowSearchResult={setShowSearchResult}
+              />
+            )}
+            {/*Search result end  */}
           </div>
         </div>
+
         <div className="topbar-right">
           <div className="auth-wrapper">
             {!isAuth ? (

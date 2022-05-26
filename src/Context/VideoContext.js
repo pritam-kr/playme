@@ -1,8 +1,10 @@
 import axios from "axios";
 import { createContext, useContext, useReducer, useState } from "react";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 import { videoReducer } from "../Reducer/Index";
 import { uniqueCategory, filterByCategory } from "../Utils/Index";
+ 
  
 const VideoContext = createContext();
 
@@ -17,7 +19,7 @@ const initialState = {
 export const VideoContextProvider = ({ children }) => {
 const [state, dispatch] = useReducer(videoReducer, initialState);
 const { videos, categoryName } = state;
-const [searchValue, setSearchValue] = useState("")
+ 
  
  
   //Use State for Sidebar
@@ -45,7 +47,13 @@ const [searchValue, setSearchValue] = useState("")
           dispatch({ type: "GET_VIDEO", payload: videos, loader: false });
         }
       }catch(error){
-        dispatch({ type: "FETCH_ERROR", loader: true });
+
+        const {
+          data: { errors },
+        } = error.response;
+        toast.error(...errors , { position: "top-right" });
+
+        // dispatch({ type: "FETCH_ERROR", loader: true });
       }
     })();
   }, []);
@@ -60,7 +68,7 @@ const [searchValue, setSearchValue] = useState("")
         getFilteredVideo,
         setActiveSidebar,
         activeSidebar,
-        setSearchValue, searchValue, getSortByLatest,
+          getSortByLatest,
       }}
     >
       {children}

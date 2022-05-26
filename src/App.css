@@ -86,6 +86,8 @@ label, button, ::placeholder {
     min-height: 100vh;
 }
 
+
+
 .main-container-header {
     color: var(--white-text);
     max-width: 100rem;
@@ -94,7 +96,7 @@ label, button, ::placeholder {
 }
 
 .playlist-wrapper{
- max-width: 100rem;
+    max-width: 100rem;
  padding: 1rem 0;
  margin: 0 auto;
  display: flex;
