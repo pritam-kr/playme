@@ -54,31 +54,36 @@ export const PlayListContextProvider = ({ children }) => {
   // create playlist
   const createPlaylist = async (name) => {
     const { playlist } = name;
-    {
-      try {
-        const {
-          status,
-          data: { playlists },
-        } = await axios.post(
-          "/api/user/playlists",
-          { playlist: { title: playlist } },
-          {
-            headers: {
-              authorization: isAuth,
-            },
+
+    if (playlist === "") {
+      toast.error("Input Field can not be empty.", {position: "top-right"})
+    } else {
+      {
+        try {
+          const {
+            status,
+            data: { playlists },
+          } = await axios.post(
+            "/api/user/playlists",
+            { playlist: { title: playlist } },
+            {
+              headers: {
+                authorization: isAuth,
+              },
+            }
+          );
+
+          if (status === 201) {
+            toast.success("Playlist Created.", { position: "top-right" });
+            playlistDispatch({ type: "CREATE_PLAYLIST", payload: playlists });
           }
-        );
+        } catch (error) {
+          const {
+            data: { errors },
+          } = error.response;
 
-        if (status === 201) {
-          toast.success("Playlist Created.", { position: "top-right" });
-          playlistDispatch({ type: "CREATE_PLAYLIST", payload: playlists });
+          toast.error(...errors, { position: "top-right" });
         }
-      } catch (error) {
-        const {
-          data: { errors },
-        } = error.response;
-
-        toast.error(...errors, { position: "top-right" });
       }
     }
   };
