@@ -4,7 +4,7 @@ import "./SearchResult.css";
 import * as FaIcons from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const SearchResult = ({ searchQuery, setShowSearchResult, setSearchTerm }) => {
+const SearchResult = ({ searchQuery, setShowSearchResult, inputRef }) => {
   const navigate = useNavigate();
 
   const {
@@ -19,7 +19,7 @@ const SearchResult = ({ searchQuery, setShowSearchResult, setSearchTerm }) => {
 
   const singleVideoHandler = (_id) => {
     //doing navigate to videoId
-     
+      inputRef.current.value = ""
     navigate(`/video/${_id}`);
     setShowSearchResult(false);
    

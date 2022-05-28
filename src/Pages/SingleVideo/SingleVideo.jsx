@@ -2,7 +2,7 @@ import React from "react";
 import "./SingleVideo.css";
 import { VideoIframe, NotesCard, Footer } from "../../Component/index";
 import * as FaIcons from "react-icons/fa";
-import { useParams, useNavigate,} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   useVideoContext,
   useLikesContext,
@@ -25,6 +25,7 @@ export const SingleVideo = () => {
   const { videoId } = useParams();
 
   const { createNotes } = useNotes();
+
   //For Liked Video
   const {
     saveLikedVideo,
@@ -34,7 +35,8 @@ export const SingleVideo = () => {
 
   // For Watch Later Video
   const {
-    addToWatchLater, removeWatchLater,
+    addToWatchLater,
+    removeWatchLater,
     state: { watchLater },
   } = useWatchLaterContext();
 
@@ -121,7 +123,10 @@ export const SingleVideo = () => {
                   )}
 
                   {watchLater.find((eachVideo) => eachVideo._id === videoId) ? (
-                    <li className="text-lg" onClick={() => removeWatchLater(videoId)}>
+                    <li
+                      className="text-lg"
+                      onClick={() => removeWatchLater(videoId)}
+                    >
                       <FaIcons.FaClock className="icons sidebar-icons active-liked-video" />{" "}
                       Watch Later
                     </li>
