@@ -20,6 +20,8 @@ export const SingleVideo = () => {
 
   const [modal, setModal] = useState(false);
 
+   
+
   const { getFilteredVideo } = useVideoContext();
 
   const { videoId } = useParams();
@@ -49,6 +51,7 @@ export const SingleVideo = () => {
 
   //Create playlist
   const playlistHandler = () => {
+  
     createPlaylist(playlistName);
     setPlaylistName((prev) => ({ ...prev, playlist: "" }));
   };

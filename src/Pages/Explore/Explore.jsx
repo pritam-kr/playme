@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 import "./Explore.css";
 import {VideoCard,Gif, Footer} from "../../Component/index"
 import {useVideoContext} from "../../Context/Index"
@@ -6,6 +6,8 @@ import {useVideoContext} from "../../Context/Index"
 export const Explore = () => {
 
     const {getUniqueCategory, dispatch, getFilteredVideo, state:{categoryName, loader}, searchValue} = useVideoContext()
+
+     
    
     return (
         <>
@@ -34,10 +36,4 @@ export const Explore = () => {
 };
 
 
-// getFilteredVideo?.filter((eachVideo) => {
-//     if(searchValue === ""){
-//         return eachVideo
-//     }else if(eachVideo.title.toLowerCase().includes(searchValue.toLowerCase())){
-//         return eachVideo
-//     } 
-// })
+ 
